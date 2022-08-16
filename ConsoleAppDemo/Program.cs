@@ -8,6 +8,64 @@ namespace ConsoleAppDemo
 {
     internal class Program
     {
+        public struct Product
+        {
+            public string Name { get; set; }
+            public string Description { get; set; }
+            public double Price { get; set; }
+
+            public int Status { get; set; }
+            public Product(string name, double price, int status)
+            {
+                Name = name;
+                Price = price;
+                Description = name + " " + price;
+                Status = status;
+            }
+
+            public string PriceToString()
+            {
+                return Price + " VND";
+            }
+
+            public string GetProductStatusName(int status)
+            {
+                string StatusName = "";
+                //if (status == (int)ProductStatus.HangMoi)
+                //{
+                //    StatusName = "Iphone chưa qua sử dụng";
+                //}
+
+                if (status == Convert.ToInt32(ProductStatus.HangMoi))
+                {
+                    StatusName = "Iphone chưa qua sử dụng";
+                }
+
+
+                if (status == (int)ProductStatus.HangDaSudung)
+                {
+                    StatusName = "Iphone chưa đã sử dụng";
+                }
+
+                return StatusName;
+            }
+        }
+
+        enum myEnum
+        {
+            CholayHang = 0,
+            DaLayHang = 1,
+            DangGiaoHang = 2,
+            Dagiao = 3
+        }
+
+        enum ProductStatus
+        {
+            HangMoi = 1,
+            HangDaSudung = 2
+
+        }
+
         static string myName = "";
         static void Main(string[] args)
         {
@@ -75,6 +133,57 @@ namespace ConsoleAppDemo
                     Console.WriteLine("{0} ", i);
                 }
             }
+
+
+            //----------------------------------------------------------------
+
+            //var pstruct = new Product("Iphone14", 250000, 1);
+            //var statusNme = pstruct.GetProductStatusName(1);
+
+            //Console.WriteLine("Name :{0} Status: {1} StatusName {2}", pstruct.Name, statusNme, statusNme);
+
+
+            //-------------------------------------------------
+
+
+            string[] cars = { "Honda", "BMW", "Ford", "Mazda" };
+
+            string[] number = { "1", "2", "3" };
+
+            //Console.WriteLine("do dai cua mang {0}", cars.Length);
+            //Console.WriteLine("gia tri ơ vi tri thu 1 {0}", cars[1]);
+            //cars[4] = "Mercedes G63";
+
+            for (int i = 0; i < cars.Length; i++)
+            {
+                Console.WriteLine("vi tri thu {0} - gia tri {1}", i, cars[i]);
+            }
+
+            //áp dụng cho các mảng hoặc là các list object chưa biết trước độ dài
+            foreach (string car in cars)
+            {
+                Console.WriteLine("gia tri {0}", car);
+            }
+
+            //Bôi đen đoạn cần comment rồi nhấn CTRL+K + C
+            // Mở comment : CTRL + K + U
+
+
+
+            Array.Sort(cars);
+
+            Array.Reverse(cars);
+
+            foreach (string car in cars)
+            {
+                Console.WriteLine("gia tri {0}", car);
+            }
+
+            var indexof = Array.IndexOf(cars, "BMW");
+
+            Console.WriteLine("vi tri cua BMW la {0}", cars[4]);
+
+
             Console.ReadLine();
         }
 
