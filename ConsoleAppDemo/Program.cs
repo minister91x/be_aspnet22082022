@@ -8,7 +8,7 @@ namespace ConsoleAppDemo
 {
     internal class Program
     {
-      
+
         public struct Product
         {
             public string Name { get; set; }
@@ -117,23 +117,6 @@ namespace ConsoleAppDemo
             }
 
 
-            for (int i = 2; i <= 10; i++)
-            {
-                int counter = 0;
-                for (int j = 2; j <= i / 2; j++)
-                {
-                    if (i % j == 0)
-                    {
-                        counter++;
-                        break;
-                    }
-                }
-
-                if (counter == 0 && i != 1)
-                {
-                    Console.WriteLine("{0} ", i);
-                }
-            }
 
 
             //----------------------------------------------------------------
@@ -155,10 +138,10 @@ namespace ConsoleAppDemo
             //Console.WriteLine("gia tri ơ vi tri thu 1 {0}", cars[1]);
             //cars[4] = "Mercedes G63";
 
-            for (int i = 0; i < cars.Length; i++)
-            {
-                Console.WriteLine("vi tri thu {0} - gia tri {1}", i, cars[i]);
-            }
+            //for (int i = 0; i < cars.Length; i++)
+            //{
+            //    Console.WriteLine("vi tri thu {0} - gia tri {1}", i, cars[i]);
+            //}
 
             //áp dụng cho các mảng hoặc là các list object chưa biết trước độ dài
             foreach (string car in cars)
@@ -185,6 +168,51 @@ namespace ConsoleAppDemo
             Console.WriteLine("vi tri cua BMW la {0}", cars[4]);
 
 
+            int[] myNum = { 1, 4, 8, 5, 10 };
+
+            int[] arr1 = new int[100];
+            int[] fr1 = new int[100];
+            int n, i, j, bien_dem;
+
+
+            Console.Write("\nDem so lan xuat hien cua tung phan tu trong mang trong C#:\n");
+            Console.Write("-----------------------------------------------------------\n");
+
+            Console.Write("Nhap so phan tu can luu giu trong mang: ");
+            n = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Nhap {0} phan tu vao trong mang:\n", n);
+            for (i = 0; i < n; i++)
+            {
+                Console.Write("Phan tu - {0}: ", i);
+                arr1[i] = Convert.ToInt32(Console.ReadLine());
+                fr1[i] = -1;
+            }
+            for (i = 0; i < n; i++)
+            {
+                bien_dem = 1;
+                for (j = i + 1; j < n; j++)
+                {
+                    if (arr1[i] == arr1[j])
+                    {
+                        bien_dem++;
+                        fr1[j] = 0;
+                    }
+                }
+
+                if (fr1[i] != 0)
+                {
+                    fr1[i] = bien_dem;
+                }
+            }
+            Console.Write("\nTan suat xuat hien cua tung phan tu trong mang la: \n");
+            for (i = 0; i < n; i++)
+            {
+                if (fr1[i] != 0)
+                {
+                    Console.Write("Phan tu {0} xuat hien {1} lan\n", arr1[i], fr1[i]);
+                }
+            }
             Console.ReadLine();
         }
 
