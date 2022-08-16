@@ -8,6 +8,7 @@ namespace ConsoleAppDemo
 {
     internal class Program
     {
+      
         public struct Product
         {
             public string Name { get; set; }
