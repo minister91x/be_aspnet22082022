@@ -8,5 +8,11 @@ namespace ConsoleApp2
 {
     public class MyFunction12
     {
+        public void MF2_CongHaiSo(int a)
+        {
+            a = a * a;
+
+
+        }
     }
 }

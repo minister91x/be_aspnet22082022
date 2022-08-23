@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -251,20 +252,22 @@ namespace ConsoleAppDemo
             //  -----------------------------------------------------------
             int a = 10;
 
-            var myfunc2 = new MyFunction12();
-
-            var myfunc = new MyFunction1();
-            myfunc.MF_CongHaiSo(a);
-            Console.Write("MF_CongHaiSo tham tri {0} \n", a);
+            //var myfunc2 = new MyFunction12();
+            //myfunc2.MF2_CongHaiSo(100);
 
 
-            myfunc.MF_CongHaiSoThamChieu(ref a);
-            Console.Write("MF_CongHaiSo tham chieu dung REF {0} \n", a);
+            //var myfunc = new MyFunction1();
+            //myfunc.MF_CongHaiSo(a);
+            //Console.Write("MF_CongHaiSo tham tri {0} \n", a);
 
-            int tich;
-            myfunc.MF_CongHaiSoThamChieu_Out(out tich);
 
-            Console.Write("MF_CongHaiSo tham chieu dung OUT {0} \n", tich);
+            //myfunc.MF_CongHaiSoThamChieu(ref a);
+            //Console.Write("MF_CongHaiSo tham chieu dung REF {0} \n", a);
+
+            //int tich;
+            //myfunc.MF_CongHaiSoThamChieu_Out(out tich);
+
+            //Console.Write("MF_CongHaiSo tham chieu dung OUT {0} \n", tich);
 
             try
             {
@@ -280,9 +283,109 @@ namespace ConsoleAppDemo
             }
 
 
+            //var minvalue = DateTime.MinValue;
+            //var maxValue = DateTime.MaxValue;
+
+            //var newDate = new DateTime(2022, 8, 23);
+            //var newDateHour = new DateTime(2022, 8, 23, 19, 20, 59);
 
 
-            Console.ReadLine();
+            //DateTime aDateTime = DateTime.Now;
+            //Console.WriteLine("Now is " + aDateTime);
+
+            //// Một khoảng thời gian. 
+            //// 1 giờ + 1 phút
+            //var aInterval = new System.TimeSpan(-30, 1, 1, 0);
+
+            //// Thêm một khoảng thời gian.
+            //DateTime newTime = aDateTime.Add(aInterval);
+
+            //DateTime newTime1 = aDateTime.AddDays(0).AddHours(1).AddMinutes(1);
+
+            //Console.WriteLine("298 :newTime: " + newTime);
+
+            //DateTime newTime12 = aDateTime.AddHours(30);
+
+            //Console.WriteLine("befor 30 days: " + newTime);
+
+            //DateTime newTimeaddHour = aDateTime.AddHours(-2);
+            //Console.WriteLine("befor add 2 hour: " + newTimeaddHour);
+
+            //DateTime newTimeaddMinutes = aDateTime.AddMinutes(30);
+            //Console.WriteLine("After add 30 minutes: " + newTimeaddHour);
+
+            //// Trừ khoảng thời gian.
+            //newTime = aDateTime.Subtract(aInterval);
+
+            //int maxdayinMonth = DateTime.DaysInMonth(2022, 02);
+            //Console.WriteLine("Max day cua thang 2: " + maxdayinMonth);
+
+            //DateTime aDateTime12 = new DateTime(2022, 8, 22, 19, 30, 00);
+            //// Các định dạng date-time được hỗ trợ.
+            //string[] formattedStrings = aDateTime12.GetDateTimeFormats();
+
+            //foreach (string format in formattedStrings)
+            //{
+            //    Console.WriteLine(format);
+            //}
+
+
+            //DateTime aDateTimes = new DateTime(2022, 8, 22, 19, 30, 00);
+
+            //Console.WriteLine(aDateTimes.ToString("dd/MM/yyyy HH:mm:ss"));
+
+            //Console.WriteLine(aDateTimes.ToString("yyyy/MM/dd HH:mm:ss"));
+
+            //Console.WriteLine(aDateTimes.ToString("HH:mm:ss dd/MM/yyyy"));
+
+            string createDateString = "22/08/2022 19:30:00";
+
+
+            var newDateConvert = DateTime.ParseExact(createDateString, "dd/MM/yyyy HH:mm:ss",
+                CultureInfo.InvariantCulture);
+
+            //var convert = Convert.ToDateTime(createDateString);
+
+            Console.WriteLine("newDateConvert: " + newDateConvert);
+
+
+            //DateTime dateValue;
+            //if (!DateTime.TryParseExact(createDateString, "dd/MM/yyyy HH:mm:ss",
+            //    new CultureInfo("en-US"), DateTimeStyles.None, out dateValue))
+            //{
+            //    Console.WriteLine("Khong phai dinh dang ngay thang");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Dung la dinh dang ngay thang");
+            //}
+
+
+            string demoString = "Demo_String,";
+            Console.WriteLine("chuoi ban dau {0}", demoString);
+            var value = demoString.Split('_')[1];
+            Console.WriteLine("chuoi sau khi cat {0}", value);
+            //demoString.Split('_').Length;
+
+            var replaceValue = demoString.Replace("Demo", "Demo1");
+            Console.WriteLine("chuoi sau khi Replace {0}", replaceValue);
+
+            var substringValue = demoString.Substring(0, demoString.Length - 1);
+            Console.WriteLine("chuoi sau khi substringValue {0}", substringValue);
+
+
+            string Value = "MyName";
+            Value = Value + "Is Quan";
+
+            StringBuilder MutableValue = new StringBuilder("MyName");
+            MutableValue.Append("Is Quan");
+
+           var abac = Console.ReadLine();
+
+            if(abac== demoString)
+            {
+
+            }
         }
 
         static void myFunction(int inputNumber)
