@@ -43,10 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Car.cs" />
     <Compile Include="DataTooLongExeption.cs" />
+    <Compile Include="DemoImplemetInterFace.cs" />
+    <Compile Include="GenericClass.cs" />
+    <Compile Include="InterfaceDemo.cs" />
     <Compile Include="MyFunction1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReturnData.cs" />
+    <Compile Include="XeContainer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

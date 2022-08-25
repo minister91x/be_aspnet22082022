@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -361,36 +362,92 @@ namespace ConsoleAppDemo
             //}
 
 
-            string demoString = "Demo_String,";
-            Console.WriteLine("chuoi ban dau {0}", demoString);
-            var value = demoString.Split('_')[1];
-            Console.WriteLine("chuoi sau khi cat {0}", value);
-            //demoString.Split('_').Length;
+            //string demoString = "Demo_String,";
+            //Console.WriteLine("chuoi ban dau {0}", demoString);
+            //var value = demoString.Split('_')[1];
+            //Console.WriteLine("chuoi sau khi cat {0}", value);
+            ////demoString.Split('_').Length;
 
-            var replaceValue = demoString.Replace("Demo", "Demo1");
-            Console.WriteLine("chuoi sau khi Replace {0}", replaceValue);
+            //var replaceValue = demoString.Replace("Demo", "Demo1");
+            //Console.WriteLine("chuoi sau khi Replace {0}", replaceValue);
 
-            var substringValue = demoString.Substring(0, demoString.Length - 1);
-            Console.WriteLine("chuoi sau khi substringValue {0}", substringValue);
+            //var substringValue = demoString.Substring(0, demoString.Length - 1);
+            //Console.WriteLine("chuoi sau khi substringValue {0}", substringValue);
 
 
-            string Value = "MyName";
-            Value = Value + "Is Quan";
+            //string Value = "MyName";
+            //Value = Value + "Is Quan";
 
-            StringBuilder MutableValue = new StringBuilder("MyName");
-            MutableValue.Append("Is Quan");
+            //StringBuilder MutableValue = new StringBuilder("MyName");
+            //MutableValue.Append("Is Quan");
 
-           var abac = Console.ReadLine();
 
-            if(abac== demoString)
+            //var NexThursday = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek + 7 + (int)DayOfWeek.Thursday);
+            //var NexThursday1 = DateTime.Today.AddDays(7);
+            //Console.WriteLine("DayOfWeek {0}",(int)DateTime.Today.DayOfWeek);
+            //Console.WriteLine("Thursday {0}",(int)DayOfWeek.Thursday);
+            //Console.WriteLine("NexThursday {0}", NexThursday);
+            //Console.WriteLine("Thursday {0}", NexThursday1);
+
+
+            // var fc = new MyFunction1();
+
+            // int x = 6;
+            // int y = 8;
+            //fc.HoanVi<int>(ref x, ref y);
+
+            // double k = 6;
+            // double z = 8;
+            // fc.HoanVi<double>(ref k, ref z);
+
+
+            // string str1 = "Lop c#";
+            // string str2 ="nang cao";
+            // fc.HoanVi<string>(ref str1, ref str2);
+
+
+            //GenericClass<int> intGenericClass = new GenericClass<int>();
+            //intGenericClass.genericProperty = 2017;
+
+            //int intVal = intGenericClass.genericMethod(2019);
+
+            //GenericClass<string> strGenericClass = new GenericClass<string>();
+            //strGenericClass.genericProperty = "Lop BE 2208";
+            //string strVal = strGenericClass.genericMethod("lop_aspnet");
+
+            ArrayList arrList = new ArrayList() { 1, "5", 2.5, true };
+
+            arrList.Add(1);
+            arrList.Add("abc");
+            arrList.Remove("5");
+            //for (int i = 0; i < arrList.Count; i++)
+            //{
+            //    Console.WriteLine(arrList[i]);
+
+            //}
+
+            //var xecontainer = new XeContainer();
+            //xecontainer.Name = "abc";
+            //xecontainer.Run(10);
+
+            var lstContainer = new List<XeContainer>();
+
+            for (int i = 0; i < 10; i++)
             {
+                var xecontainer = new XeContainer();
+                xecontainer.Name = "Xe container so " + (i + 1);
+                lstContainer.Add(xecontainer);
 
+                ///lstContainer.Add(new XeContainer { Name = "Xe container so " + (i + 1) });
             }
-        }
 
-        static void myFunction(int inputNumber)
-        {
-            myName = "My Name2";
+            foreach (var item in lstContainer)
+            {
+                Console.Write(item.Name + "\n");
+            }
+
+            Console.ReadLine();
+
         }
     }
 }
