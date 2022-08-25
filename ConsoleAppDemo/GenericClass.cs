@@ -10,6 +10,16 @@ namespace ConsoleAppDemo
     {
         private T genericField;
 
+        public GenericClass(T genericField)
+        {
+            this.genericField = genericField;
+        }
+
+        public void write()
+        {
+            Console.WriteLine(genericField);
+        }
+
         public T genericProperty { get; set; }
         public T genericMethod(T genericParameter)
         {
