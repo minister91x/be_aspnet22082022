@@ -445,7 +445,59 @@ namespace ConsoleAppDemo
             {
                 Console.Write(item.Name + "\n");
             }
+            var democlass = new DemoClass();
 
+
+            democlass.Name = "My name";
+            democlass.Age = 20;
+            Console.WriteLine("Name :{0}", democlass.Name);
+            Console.WriteLine("Age :{0}", democlass.Age);
+            Console.WriteLine("Age value {0} :", democlass.SetAge(50));
+
+            var _animalCat = new Cat();
+            _animalCat.AnimalSound();
+
+            var _animalBird = new Bird();
+            _animalBird.AnimalSound();
+
+
+
+            //cách 1
+            var abc = 1 > 0 ? true : 2 > 1 ? true : 3 > 2 ? true : false ;
+
+            // TRƯỚC DẤU ? LÀ MỆNH ĐỀ IF
+            // SAU DẤU ? LÀ GIÁ TRỊ CỦA IF NẾU ĐÚNG 
+            // SAU DẤU : LÀ GIÁ TRỊ CỦA IF NẾU SAI 
+            // cách 2:
+            if (1 > 0)
+            {
+                abc = true;
+            }
+            else
+            {
+                abc = false;
+            }
+            var diemtrungbinh = 7;
+            var hocluc = string.Empty;
+
+            switch (diemtrungbinh)
+            {
+                case 1:
+                    hocluc = "kem";
+                    break;
+                case 2:
+                    hocluc = "kem";
+                    break;
+                case 3:
+                    hocluc = "kem";
+                    break;
+                default:
+                    hocluc = "gioi";
+                    break;
+
+            }
+
+            // nếu 1>0 thì trả về true else thì trả về fasle
             Console.ReadLine();
 
         }

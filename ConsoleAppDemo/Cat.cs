@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace ConsoleAppDemo
 {
-    public interface InterfaceDemo
+    public class Cat : Animal
     {
-       
-       void Save();
-        void Write();
-    }
+        public override void AnimalSound()
+        {
+            Console.WriteLine("meo meo");
+        }
 
-    public interface Demo1<T>
-    {
-        T GetValue(T item);
+        
     }
 }

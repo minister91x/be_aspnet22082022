@@ -43,8 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bird.cs" />
     <Compile Include="Car.cs" />
+    <Compile Include="Cat.cs" />
     <Compile Include="DataTooLongExeption.cs" />
+    <Compile Include="Animal.cs" />
+    <Compile Include="DemoClass.cs" />
     <Compile Include="DemoImplemetInterFace.cs" />
     <Compile Include="GenericClass.cs" />
     <Compile Include="InterfaceDemo.cs" />
