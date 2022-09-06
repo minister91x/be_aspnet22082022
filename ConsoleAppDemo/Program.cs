@@ -509,6 +509,11 @@ namespace ConsoleAppDemo
 
             var sumTotalAmount = lstInvoice.Sum(s => s.TotalAmount);
             Console.WriteLine("total Amount:" + sumTotalAmount);
+
+            var cat = new DemoImplemetInterFace();
+            cat.HienThi();
+            cat.Nhap();
+
             Console.ReadLine();
 
         }

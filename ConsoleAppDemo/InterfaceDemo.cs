@@ -9,8 +9,8 @@ namespace ConsoleAppDemo
     public interface InterfaceDemo
     {
        
-       void Save();
-        void Write();
+       void Nhap();
+        void HienThi();
     }
 
     public interface Demo1<T>

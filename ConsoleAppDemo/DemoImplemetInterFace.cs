@@ -8,19 +8,17 @@ namespace ConsoleAppDemo
 {
     public class DemoImplemetInterFace : InterfaceDemo
     {
-        
-
-        public void Save()
+        public void HienThi()
         {
-            Console.WriteLine("thuc hien cong viec");
+            throw new NotImplementedException();
         }
 
-        public void Write()
+        public void Nhap()
         {
             throw new NotImplementedException();
         }
     }
-       public class DemoGenericImplemetInterFace<T> : Demo1<T>
+    public class DemoGenericImplemetInterFace<T> : Demo1<T>
     {
         public T GetValue(T item)
         {
