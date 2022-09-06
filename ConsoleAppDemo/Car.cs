@@ -12,6 +12,14 @@ namespace ConsoleAppDemo
         public string Width { get; set; }
         public string Height { get; set; }
 
+        public Car(string name, string width, string height)
+        {
+            Name = "Car Name";
+            Width = width;
+            Height = height;
+            Console.WriteLine("Car Name");
+        }
+
         public int Run(int xang)
         {
             if (xang > 0)

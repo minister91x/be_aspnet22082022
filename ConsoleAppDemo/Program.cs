@@ -425,40 +425,44 @@ namespace ConsoleAppDemo
             //    Console.WriteLine(arrList[i]);
 
             //}
+           
 
-            //var xecontainer = new XeContainer();
-            //xecontainer.Name = "abc";
-            //xecontainer.Run(10);
+            //var xecontainer = new XeContainer("container","100","20");
+           
+            //var car = new Car("Car", "100", "20");
+
+            //var xecontainer1 = new XeContainer1("container1", "100", "20");
+           
 
             var lstContainer = new List<XeContainer>();
 
             for (int i = 0; i < 10; i++)
             {
-                var xecontainer = new XeContainer();
-                xecontainer.Name = "Xe container so " + (i + 1);
-                lstContainer.Add(xecontainer);
+              //  var xecontainer = new XeContainer();
+               // xecontainer.Name = "Xe container so " + (i + 1);
+               // lstContainer.Add(xecontainer);
 
                 ///lstContainer.Add(new XeContainer { Name = "Xe container so " + (i + 1) });
             }
 
-            foreach (var item in lstContainer)
-            {
-                Console.Write(item.Name + "\n");
-            }
-            var democlass = new DemoClass();
+            //foreach (var item in lstContainer)
+            //{
+            //    Console.Write(item.Name + "\n");
+            //}
+            //var democlass = new DemoClass();
 
 
-            democlass.Name = "My name";
-            democlass.Age = 20;
-            Console.WriteLine("Name :{0}", democlass.Name);
-            Console.WriteLine("Age :{0}", democlass.Age);
-            Console.WriteLine("Age value {0} :", democlass.SetAge(50));
+            //democlass.Name = "My name";
+            //democlass.Age = 20;
+            //Console.WriteLine("Name :{0}", democlass.Name);
+            //Console.WriteLine("Age :{0}", democlass.Age);
+            //Console.WriteLine("Age value {0} :", democlass.SetAge(50));
 
-            var _animalCat = new Cat();
-            _animalCat.AnimalSound();
+            //var _animalCat = new Cat();
+            //_animalCat.AnimalSound();
 
-            var _animalBird = new Bird();
-            _animalBird.AnimalSound();
+            //var _animalBird = new Bird();
+            //_animalBird.AnimalSound();
 
 
 
@@ -498,6 +502,13 @@ namespace ConsoleAppDemo
             }
 
             // nếu 1>0 thì trả về true else thì trả về fasle
+
+            var lstInvoice = new List<InVoice>();
+            lstInvoice.Add(new InVoice { Code = "HD001", Name = "Mat hang 1", Quantity = 2, Amount = 10000, TotalAmount = 20000 });
+            lstInvoice.Add(new InVoice { Code = "HD002", Name = "Mat hang 2", Quantity = 3, Amount = 15000, TotalAmount = 45000 });
+
+            var sumTotalAmount = lstInvoice.Sum(s => s.TotalAmount);
+            Console.WriteLine("total Amount:" + sumTotalAmount);
             Console.ReadLine();
 
         }

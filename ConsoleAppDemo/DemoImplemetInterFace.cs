@@ -8,6 +8,8 @@ namespace ConsoleAppDemo
 {
     public class DemoImplemetInterFace : InterfaceDemo
     {
+        
+
         public void Save()
         {
             Console.WriteLine("thuc hien cong viec");

@@ -52,11 +52,13 @@
     <Compile Include="DemoImplemetInterFace.cs" />
     <Compile Include="GenericClass.cs" />
     <Compile Include="InterfaceDemo.cs" />
+    <Compile Include="InVoice.cs" />
     <Compile Include="MyFunction1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReturnData.cs" />
     <Compile Include="XeContainer.cs" />
+    <Compile Include="XeContainer1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
