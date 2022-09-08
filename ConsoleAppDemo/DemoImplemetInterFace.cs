@@ -10,12 +10,12 @@ namespace ConsoleAppDemo
     {
         public void HienThi()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void Nhap()
         {
-            throw new NotImplementedException();
+          //  throw new NotImplementedException();
         }
     }
     public class DemoGenericImplemetInterFace<T> : Demo1<T>

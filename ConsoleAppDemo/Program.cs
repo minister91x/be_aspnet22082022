@@ -425,22 +425,22 @@ namespace ConsoleAppDemo
             //    Console.WriteLine(arrList[i]);
 
             //}
-           
+
 
             //var xecontainer = new XeContainer("container","100","20");
-           
+
             //var car = new Car("Car", "100", "20");
 
             //var xecontainer1 = new XeContainer1("container1", "100", "20");
-           
+
 
             var lstContainer = new List<XeContainer>();
 
             for (int i = 0; i < 10; i++)
             {
-              //  var xecontainer = new XeContainer();
-               // xecontainer.Name = "Xe container so " + (i + 1);
-               // lstContainer.Add(xecontainer);
+                //  var xecontainer = new XeContainer();
+                // xecontainer.Name = "Xe container so " + (i + 1);
+                // lstContainer.Add(xecontainer);
 
                 ///lstContainer.Add(new XeContainer { Name = "Xe container so " + (i + 1) });
             }
@@ -467,7 +467,7 @@ namespace ConsoleAppDemo
 
 
             //cách 1
-            var abc = 1 > 0 ? true : 2 > 1 ? true : 3 > 2 ? true : false ;
+            var abc = 1 > 0 ? true : 2 > 1 ? true : 3 > 2 ? true : false;
 
             // TRƯỚC DẤU ? LÀ MỆNH ĐỀ IF
             // SAU DẤU ? LÀ GIÁ TRỊ CỦA IF NẾU ĐÚNG 
@@ -514,6 +514,54 @@ namespace ConsoleAppDemo
             cat.HienThi();
             cat.Nhap();
 
+            var gui = Guid.NewGuid();
+            Console.WriteLine("GUI :" + gui);
+
+
+            ManagerEmployee quanLySinhVien = new ManagerEmployee();
+
+            while (true)
+            {
+                Console.WriteLine("\nCHUONG TRINH QUAN LY NHAN VIEN C#");
+                Console.WriteLine("*************************MENU**************************");
+                Console.WriteLine("**  1. Them nhan vien.                               **");
+                Console.WriteLine("**  2. Cap nhat thong tin nhan vien boi ID.          **");
+                Console.WriteLine("**  3. Xoa nhan vien boi ID.                         **");
+                Console.WriteLine("**  4. Tim kiem nhan vien theo ten.                  **");
+                Console.WriteLine("**  0. Thoat                                         **");
+                Console.WriteLine("*******************************************************");
+                Console.Write("Nhap tuy chon: ");
+                int key = Convert.ToInt32(Console.ReadLine());
+                switch (key)
+                {
+                    case 1:
+                        Console.WriteLine("\n1. Them nhan vien.");
+                        quanLySinhVien.NhapNhanVien();
+                        Console.WriteLine("\nThem nhan vien thanh cong!");
+                        break;
+                    case 2:
+                        if (quanLySinhVien.SoLuongNhanVien() > 0)
+                        {
+                            string name;
+                            Console.WriteLine("\n2. Cap nhat thong tin nhan vien. ");
+                            Console.Write("\nNhap ID: ");
+                            name = Convert.ToString(Console.ReadLine());
+                            quanLySinhVien.UpdateNhanVien(name);
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nSanh sach nhan vien trong!");
+                        }
+                        break;
+                    case 0:
+                        Console.WriteLine("\nBan da chon thoat chuong trinh!");
+                        return;
+                    default:
+                        Console.WriteLine("\nKhong co chuc nang nay!");
+                        Console.WriteLine("\nHay chon chuc nang trong hop menu.");
+                        break;
+                }
+            }
             Console.ReadLine();
 
         }

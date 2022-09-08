@@ -43,10 +43,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Customer.cs" />
+    <Compile Include="Developer.cs" />
+    <Compile Include="Employee.cs" />
+    <Compile Include="HocSinhKhoiA.cs" />
+    <Compile Include="HocSinhKhoiC.cs" />
+    <Compile Include="IEmployee.cs" />
+    <Compile Include="IStudy.cs" />
+    <Compile Include="IStudyToan.cs" />
+    <Compile Include="IStudyVan.cs" />
+    <Compile Include="IStudyVatLy.cs" />
+    <Compile Include="ManagerEmployee.cs" />
+    <Compile Include="Person.cs" />
+    <Compile Include="IAttendance.cs" />
     <Compile Include="MyFunction12.cs" />
     <Compile Include="PrivateClass.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Salesman.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
