@@ -520,48 +520,54 @@ namespace ConsoleAppDemo
 
             ManagerEmployee quanLySinhVien = new ManagerEmployee();
 
-            while (true)
-            {
-                Console.WriteLine("\nCHUONG TRINH QUAN LY NHAN VIEN C#");
-                Console.WriteLine("*************************MENU**************************");
-                Console.WriteLine("**  1. Them nhan vien.                               **");
-                Console.WriteLine("**  2. Cap nhat thong tin nhan vien boi ID.          **");
-                Console.WriteLine("**  3. Xoa nhan vien boi ID.                         **");
-                Console.WriteLine("**  4. Tim kiem nhan vien theo ten.                  **");
-                Console.WriteLine("**  0. Thoat                                         **");
-                Console.WriteLine("*******************************************************");
-                Console.Write("Nhap tuy chon: ");
-                int key = Convert.ToInt32(Console.ReadLine());
-                switch (key)
-                {
-                    case 1:
-                        Console.WriteLine("\n1. Them nhan vien.");
-                        quanLySinhVien.NhapNhanVien();
-                        Console.WriteLine("\nThem nhan vien thanh cong!");
-                        break;
-                    case 2:
-                        if (quanLySinhVien.SoLuongNhanVien() > 0)
-                        {
-                            string name;
-                            Console.WriteLine("\n2. Cap nhat thong tin nhan vien. ");
-                            Console.Write("\nNhap ID: ");
-                            name = Convert.ToString(Console.ReadLine());
-                            quanLySinhVien.UpdateNhanVien(name);
-                        }
-                        else
-                        {
-                            Console.WriteLine("\nSanh sach nhan vien trong!");
-                        }
-                        break;
-                    case 0:
-                        Console.WriteLine("\nBan da chon thoat chuong trinh!");
-                        return;
-                    default:
-                        Console.WriteLine("\nKhong co chuc nang nay!");
-                        Console.WriteLine("\nHay chon chuc nang trong hop menu.");
-                        break;
-                }
-            }
+            //while (true)
+            //{
+            //    Console.WriteLine("\nCHUONG TRINH QUAN LY NHAN VIEN C#");
+            //    Console.WriteLine("*************************MENU**************************");
+            //    Console.WriteLine("**  1. Them nhan vien.                               **");
+            //    Console.WriteLine("**  2. Cap nhat thong tin nhan vien boi ID.          **");
+            //    Console.WriteLine("**  3. Xoa nhan vien boi ID.                         **");
+            //    Console.WriteLine("**  4. Tim kiem nhan vien theo ten.                  **");
+            //    Console.WriteLine("**  0. Thoat                                         **");
+            //    Console.WriteLine("*******************************************************");
+            //    Console.Write("Nhap tuy chon: ");
+            //    int key = Convert.ToInt32(Console.ReadLine());
+            //    switch (key)
+            //    {
+            //        case 1:
+            //            Console.WriteLine("\n1. Them nhan vien.");
+            //            quanLySinhVien.NhapNhanVien();
+            //            Console.WriteLine("\nThem nhan vien thanh cong!");
+            //            break;
+            //        case 2:
+            //            if (quanLySinhVien.SoLuongNhanVien() > 0)
+            //            {
+            //                string name;
+            //                Console.WriteLine("\n2. Cap nhat thong tin nhan vien. ");
+            //                Console.Write("\nNhap ID: ");
+            //                name = Convert.ToString(Console.ReadLine());
+            //                quanLySinhVien.UpdateNhanVien(name);
+            //            }
+            //            else
+            //            {
+            //                Console.WriteLine("\nSanh sach nhan vien trong!");
+            //            }
+            //            break;
+            //        case 0:
+            //            Console.WriteLine("\nBan da chon thoat chuong trinh!");
+            //            return;
+            //        default:
+            //            Console.WriteLine("\nKhong co chuc nang nay!");
+            //            Console.WriteLine("\nHay chon chuc nang trong hop menu.");
+            //            break;
+            //    }
+            //}
+
+            var statictValue = StaticClass.GetName();
+            var statictValue1 = StaticClass.GetName();
+            var statictValue2 = StaticClass.GetName();
+
+            Console.WriteLine("statictValue:"+ quanLySinhVien.GenerateID());
             Console.ReadLine();
 
         }

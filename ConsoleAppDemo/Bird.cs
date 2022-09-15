@@ -12,5 +12,10 @@ namespace ConsoleAppDemo
         {
             Console.WriteLine("chip chip");
         }
+        public override void Eat()
+        {
+            Console.WriteLine("con sau");
+        }
+
     }
 }

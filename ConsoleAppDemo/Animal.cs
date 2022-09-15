@@ -11,11 +11,13 @@ namespace ConsoleAppDemo
         // có thể khai báo được thuộc tính
         public string Name { get; set; }
 
-        // có thể có thân hàm hoặc không
+        // abstract method KHÔNG được có thân hàm và phương thức chỉ có tên ở lớp cơ sở(base class) 
+        // BẮT BUỘC phải được override ở tất các các lớp kế thừa(derived class).
         public abstract void AnimalSound();
 
-        // virtual method
-        public void Eat()
+        // virtual method BẮT BUỘC phải có thân hàm 
+        // KHÔNG BẮT BUỘC phải override ở các class con kế thừa
+        public virtual void Eat()
         {
             Console.WriteLine("Động vật ăn cỏ");
         }

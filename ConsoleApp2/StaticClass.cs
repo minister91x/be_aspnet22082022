@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2
 {
-    internal class Program
+    public static class StaticClass
     {
-        static void Main(string[] args)
+        public static string GetName()
         {
-            var conection = DBHelper.GetSqlConnection();
-
+            return "my name is Quan";
         }
     }
 }

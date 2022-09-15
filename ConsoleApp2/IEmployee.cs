@@ -14,6 +14,8 @@ namespace ConsoleApp2
         void UpdateNhanVien(string ID);
         List<Employee> FindByName(string keyword);
         bool DeleteById(string ID);
-        int SoLuongNhanVien();
+        int SoLuongNhanVien111();
+
+        int DeleteNhanVien(string ids);
     }
 }

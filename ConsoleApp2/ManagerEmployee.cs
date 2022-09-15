@@ -115,6 +115,19 @@ namespace ConsoleApp2
             return IsDeleted;
         }
 
-       
+        public int DeleteNhanVien(string ids)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int SoLuongNhanVien111()
+        {
+            throw new NotImplementedException();
+        }
+
+        private int CheckIsNumber()
+        {
+            return 1;
+        }
     }
 }
