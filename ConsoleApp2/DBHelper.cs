@@ -79,25 +79,25 @@ namespace ConsoleApp2
                 //Bước 2 : Dùng Sqlcommand để thao tác với database 
 
                 // Nếu dùng CommandText thì khai báo CommandType là TEXT
-                SqlCommand commandtEXT = new SqlCommand("INSERT INTO KHACHHANG (MaKH, Ten, DiaChi, GioiTinh, Tuoi, SĐT)VALUES(1, '" + name + "', 'HA NOI', 'nam', 18, '091232432&1=1')", connectionstring);
-                commandtEXT.CommandType = System.Data.CommandType.Text;
+                //SqlCommand commandtEXT = new SqlCommand("INSERT INTO KHACHHANG (MaKH, Ten, DiaChi, GioiTinh, Tuoi, SĐT)VALUES(1, '" + name + "', 'HA NOI', 'nam', 18, '091232432&1=1')", connectionstring);
+                //commandtEXT.CommandType = System.Data.CommandType.Text;
 
                 // Nếu dùng StoredProcedure thì khai báo CommandType là StoredProcedure
-                SqlCommand command = new SqlCommand("Customer_Insert", connectionstring);
+                SqlCommand command = new SqlCommand("SP_Employee_Insert", connectionstring);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
 
                 // Khới tạo các tham số truyển vào nếu dùng StoreProcedure bằng class SqlParameter 
                 SqlParameter sqlParameter = new SqlParameter();
                 // Khai bảo tên của Parameter
-                sqlParameter.ParameterName = "@_TenKhachhang";
+                sqlParameter.ParameterName = "@id";
                 // GIÁ TRỊ CỦA PARAMETER
-                sqlParameter.Value = name;
+                sqlParameter.Value = 1;
                 // add parametter vào trong Sqlcommand
                 command.Parameters.Add(sqlParameter);
 
 
                 SqlParameter sqlParameter1 = new SqlParameter();
-                sqlParameter1.ParameterName = "@_DiaChiKH";
+                sqlParameter1.ParameterName = "@_TenNV";
                 sqlParameter1.Value = name;
                 command.Parameters.Add(sqlParameter1);
 
