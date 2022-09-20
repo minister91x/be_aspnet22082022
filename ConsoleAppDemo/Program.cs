@@ -563,11 +563,15 @@ namespace ConsoleAppDemo
             //    }
             //}
 
-            var statictValue = StaticClass.GetName();
-            var statictValue1 = StaticClass.GetName();
-            var statictValue2 = StaticClass.GetName();
-
-            Console.WriteLine("statictValue:"+ quanLySinhVien.GenerateID());
+            var list = DBHelper.GetEmployees();
+            if (list != null && list.Count > 0)
+            {
+                foreach (var item in list)
+                {
+                    Console.WriteLine("Name:" + item.Name);
+                }
+            }
+            Console.WriteLine("statictValue:" + quanLySinhVien.GenerateID());
             Console.ReadLine();
 
         }

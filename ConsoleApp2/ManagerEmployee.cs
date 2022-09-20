@@ -35,7 +35,7 @@ namespace ConsoleApp2
         {
             // Khởi tạo một nhân viên mới
             Employee sv = new Employee();
-            sv.ID = GenerateID();
+           // sv.ID = GenerateID();
             Console.Write("Nhap ten nhan vien: ");
             sv.Name = Convert.ToString(Console.ReadLine());
             ListEmployee.Add(sv);
@@ -48,10 +48,10 @@ namespace ConsoleApp2
             {
                 foreach (Employee sv in ListEmployee)
                 {
-                    if (sv.ID == ID)
-                    {
-                        searchResult = sv;
-                    }
+                    //if (sv.ID == ID)
+                    //{
+                    //    searchResult = sv;
+                    //}
                 }
             }
 

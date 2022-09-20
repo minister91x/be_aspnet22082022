@@ -8,6 +8,22 @@ namespace ConsoleApp2
 {
     public class Employee: Person
     {
-        public string ID { get; set; }
+       
+        public int MaNV { get; set; }
+
+       
+        public string TenNV { get; set; }
+
+    
+        public string DiaChi { get; set; }
+
+        public int? Tuoi { get; set; }
+
+        public string GioiTinh { get; set; }
+
+        
+        public string NhiemVu { get; set; }
+
+        public string SDT { get; set; }
     }
 }
