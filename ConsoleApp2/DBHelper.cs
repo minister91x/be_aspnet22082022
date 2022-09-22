@@ -34,7 +34,7 @@ namespace ConsoleApp2
         }
 
 
-        public static List<Employee> GetEmployees()
+        public static List<Employee> GetEmployees(string TenNhanVien)
         {
             var employees = new List<Employee>();
             try
@@ -44,6 +44,16 @@ namespace ConsoleApp2
                 //Bước 2 : Dùng Sqlcommand để thao tác với database 
                 SqlCommand command = new SqlCommand("SP_Employee_GetList", connectionstring);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                //SqlParameter parameter = new SqlParameter();
+                //parameter.ParameterName = "@TenNhanVien";
+                //parameter.Value = TenNhanVien;
+
+                //command.Parameters.Add(parameter);
+                var employeeName = string.IsNullOrEmpty(TenNhanVien) ? string.Empty: TenNhanVien;
+
+                command.Parameters.AddWithValue("@TenNhanVien", TenNhanVien);
+                
                 // bước 3
                 SqlDataReader reader = command.ExecuteReader();
                 //while (reader.Read())

@@ -51,6 +51,7 @@
     <Compile Include="DemoClass.cs" />
     <Compile Include="DemoImplemetInterFace.cs" />
     <Compile Include="GenericClass.cs" />
+    <Compile Include="HocSinh.cs" />
     <Compile Include="InterfaceDemo.cs" />
     <Compile Include="InVoice.cs" />
     <Compile Include="MyFunction1.cs" />
