@@ -12,14 +12,14 @@ namespace EntitiFrameWorkMigration
     {
         public StudentModels() : base("name=ManagerStudent")
         {
-           Database.SetInitializer(new DropCreateDatabaseAlways<StudentModels>());
+          // Database.SetInitializer(new DropCreateDatabaseAlways<StudentModels>());
 
-            //var initializer = new MigrateDatabaseToLatestVersion<StudentModels, Migrations.Configuration>(); 
-            //Database.SetInitializer(initializer);
+            var initializer = new MigrateDatabaseToLatestVersion<StudentModels, Migrations.Configuration>(); 
+           Database.SetInitializer(initializer);
         }
 
         public virtual DbSet<Student> student { get; set; }
 
-        //public virtual DbSet<Grade> grade { get; set; }
+        public virtual DbSet<Grade> grade { get; set; }
     }
 }
