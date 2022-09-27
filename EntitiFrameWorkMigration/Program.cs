@@ -13,8 +13,17 @@ namespace EntitiFrameWorkMigration
             var model = new StudentModels();
             try
             {
-                model.grade.Add(new Grade { GradeName = "Toan", GradeId = 1, Section = "abc" });
-                model.SaveChanges();
+                // model.grade.Add(new Grade { GradeName = "Toan11", GradeId = 1, Section = "abc" });
+                var lstStudent = model.student.ToList();
+
+                var student = model.student.ToList().FindAll(b => b.Id == 3).FirstOrDefault();
+
+                if (student != null && student.Id > 0)
+                {
+                    student.Name = "QUẢNG NINH";
+                    //model.student.Remove(student);
+                    model.SaveChanges();
+                }
 
                 if (model.student.ToList().Count > 0)
                 {
@@ -45,7 +54,7 @@ namespace EntitiFrameWorkMigration
 
                 foreach (var item in list1)
                 {
-                    
+
                     Console.WriteLine("LINQ ID : {0} Name :{1} Address :{2}"
                         , item.Id, item.DateOfBirth, item.Address);
                 }
