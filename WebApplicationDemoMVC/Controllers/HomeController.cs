@@ -16,11 +16,10 @@ namespace WebApplicationDemoMVC.Controllers
             try
             {
                 //var model = new WebApplicationDemoMVC.Models.StudentModel();
-
                 //list = model.Students.ToList();
 
-                var list1 = new EntitiFrameWorkMigration.StudentModels();
-                var data = list1.student.ToList();
+                var context = new EntitiFrameWorkMigration.DAOImpl.StudentDAOImpl();
+                var data = context.GetAllStudents();
                 if (data != null && data.Count > 0)
                 {
                     foreach (var item in data)
@@ -28,6 +27,9 @@ namespace WebApplicationDemoMVC.Controllers
                         list.Add(new Models.Student { Id = item.Id, Name = item.Name });
                     }
                 }
+
+               
+
             }
             catch (Exception ex)
             {

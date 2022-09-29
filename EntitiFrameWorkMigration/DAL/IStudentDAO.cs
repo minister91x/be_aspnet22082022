@@ -11,5 +11,12 @@ namespace EntitiFrameWorkMigration.DAL
     {
         List<Student> GetAllStudents();
         int Save(Student student);
+
+        int StudentUpdate(int StudentId);
+
+        int Student_Delete(int StudentId);
+
+        Student Student_GetByID(int StudentId);
+
     }
 }
