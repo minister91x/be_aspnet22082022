@@ -54,10 +54,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassModel.cs" />
+    <Compile Include="DAL\IStudentDAO.cs" />
+    <Compile Include="DAL\ITeacher.cs" />
+    <Compile Include="DAOImpl\StudentDAOImpl.cs" />
+    <Compile Include="DAO\Teacher.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Student.cs" />
+    <Compile Include="DAO\Student.cs" />
     <Compile Include="StudentModels.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -10,11 +10,9 @@ namespace WebApplicationDemo.Controllers
     {
         public ActionResult Index()
         {
-
-           var ctx = new MedicineStoreModels();
-            var lst1 = ctx.NHANVIENs.ToList();
-            //var list = ConsoleApp2.DBHelper.GetEmployees();
-            return View(lst1);
+          
+            return View();
+       
         }
 
         public ActionResult About()

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntitiFrameWorkMigration.DAO;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
@@ -10,7 +11,7 @@ namespace EntitiFrameWorkMigration
 {
     public class StudentModels : DbContext
     {
-        public StudentModels() : base("name=ManagerStudent")
+        public StudentModels() : base("ManagerStudent")
         {
           // Database.SetInitializer(new DropCreateDatabaseAlways<StudentModels>());
 

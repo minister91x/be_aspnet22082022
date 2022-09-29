@@ -81,3 +81,6 @@ C:\Users\Admin\source\repos\ConsoleAppDemo\WebApplicationDemo\obj\Debug\WebAppli
 C:\Users\Admin\source\repos\ConsoleAppDemo\WebApplicationDemo\obj\Debug\WebApplicationDemo.csproj.CopyComplete
 C:\Users\Admin\source\repos\ConsoleAppDemo\WebApplicationDemo\obj\Debug\WebApplicationDemo.dll
 C:\Users\Admin\source\repos\ConsoleAppDemo\WebApplicationDemo\obj\Debug\WebApplicationDemo.pdb
+C:\Users\Admin\source\repos\ConsoleAppDemo\WebApplicationDemo\bin\EntitiFrameWorkMigration.exe
+C:\Users\Admin\source\repos\ConsoleAppDemo\WebApplicationDemo\bin\EntitiFrameWorkMigration.pdb
+C:\Users\Admin\source\repos\ConsoleAppDemo\WebApplicationDemo\bin\EntitiFrameWorkMigration.exe.config

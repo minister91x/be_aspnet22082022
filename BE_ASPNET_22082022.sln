@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationDemo", "WebAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntitiFrameWorkMigration", "EntitiFrameWorkMigration\EntitiFrameWorkMigration.csproj", "{BA528C78-E335-40F5-B65C-7F38E0D146C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationDemoMVC", "WebApplicationDemoMVC\WebApplicationDemoMVC.csproj", "{DA59FB81-8002-4D32-B276-4E9FCD12EF40}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{BA528C78-E335-40F5-B65C-7F38E0D146C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA528C78-E335-40F5-B65C-7F38E0D146C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA528C78-E335-40F5-B65C-7F38E0D146C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA59FB81-8002-4D32-B276-4E9FCD12EF40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA59FB81-8002-4D32-B276-4E9FCD12EF40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA59FB81-8002-4D32-B276-4E9FCD12EF40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA59FB81-8002-4D32-B276-4E9FCD12EF40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

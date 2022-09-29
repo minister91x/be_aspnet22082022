@@ -1,0 +1,14 @@
+C:\Users\Admin\source\repos\ConsoleAppDemo\DataAccess.Student\obj\Debug\net6.0\DataAccess.Student.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\ConsoleAppDemo\DataAccess.Student\obj\Debug\net6.0\DataAccess.Student.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\source\repos\ConsoleAppDemo\DataAccess.Student\obj\Debug\net6.0\DataAccess.Student.AssemblyInfoInputs.cache
+C:\Users\Admin\source\repos\ConsoleAppDemo\DataAccess.Student\obj\Debug\net6.0\DataAccess.Student.AssemblyInfo.cs
+C:\Users\Admin\source\repos\ConsoleAppDemo\DataAccess.Student\obj\Debug\net6.0\DataAccess.Student.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\ConsoleAppDemo\DataAccess.Student\bin\Debug\net6.0\DataAccess.Student.deps.json
+C:\Users\Admin\source\repos\ConsoleAppDemo\DataAccess.Student\bin\Debug\net6.0\DataAccess.Student.runtimeconfig.json
+C:\Users\Admin\source\repos\ConsoleAppDemo\DataAccess.Student\bin\Debug\net6.0\DataAccess.Student.dll
+C:\Users\Admin\source\repos\ConsoleAppDemo\DataAccess.Student\bin\Debug\net6.0\DataAccess.Student.pdb
+C:\Users\Admin\source\repos\ConsoleAppDemo\DataAccess.Student\obj\Debug\net6.0\DataAccess.Student.dll
+C:\Users\Admin\source\repos\ConsoleAppDemo\DataAccess.Student\obj\Debug\net6.0\refint\DataAccess.Student.dll
+C:\Users\Admin\source\repos\ConsoleAppDemo\DataAccess.Student\obj\Debug\net6.0\DataAccess.Student.pdb
+C:\Users\Admin\source\repos\ConsoleAppDemo\DataAccess.Student\obj\Debug\net6.0\DataAccess.Student.genruntimeconfig.cache
+C:\Users\Admin\source\repos\ConsoleAppDemo\DataAccess.Student\obj\Debug\net6.0\ref\DataAccess.Student.dll
