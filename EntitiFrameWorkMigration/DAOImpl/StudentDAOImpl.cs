@@ -24,8 +24,6 @@ namespace EntitiFrameWorkMigration.DAOImpl
             }
 
             return list;
-
-
         }
 
         public int Save(Student student)
