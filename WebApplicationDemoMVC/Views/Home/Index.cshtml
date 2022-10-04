@@ -3,7 +3,10 @@
 }
 @*@model List<WebApplicationDemoMVC.Models.Student>*@
 @model List<WebApplicationDemoMVC.Models.Student>
-<a href="@Html.Action("MyAction", "Home", new { name = "quan", id = 2022 })"> Bấm vào đây </a>
+<a href="/home/MyAction/ten-2022"> Bấm vào đây </a>
+<br />
+
+<br />
 @Html.ActionLink("Bam vao day", "MyAction", "Home", new { name = "quan", id = 2022 })
 <div class="row">
 
@@ -13,6 +16,7 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +27,7 @@
                     <tr>
                         <td>@item.Id</td>
                         <td>@item.Name</td>
+                        <td><a href="/trang-chi-tiet-@item.Name/@item.Id">Views Detail </a></td>
                     </tr>
 
                 }
