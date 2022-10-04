@@ -14,10 +14,24 @@ namespace WebApplicationDemoMVC
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+               name: "MyRouter1",
+               url: "trang-chi-tiet-{name}/{id}",
+               defaults: new { controller = "Home", action = "MyAction", name = UrlParameter.Optional, id = UrlParameter.Optional }
+               );
+
+            //routes.MapRoute(
+            //    name: "MyRouter",
+            //    url: "{controller}/{action}/{name}/{id}",
+            //    defaults: new { controller = "Home", action = "MyAction", name = UrlParameter.Optional, id = UrlParameter.Optional }
+            //    );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+
         }
     }
 }

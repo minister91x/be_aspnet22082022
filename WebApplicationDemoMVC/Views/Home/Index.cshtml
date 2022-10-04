@@ -3,6 +3,8 @@
 }
 @*@model List<WebApplicationDemoMVC.Models.Student>*@
 @model List<WebApplicationDemoMVC.Models.Student>
+<a href="@Html.Action("MyAction", "Home", new { name = "quan", id = 2022 })"> Bấm vào đây </a>
+@Html.ActionLink("Bam vao day", "MyAction", "Home", new { name = "quan", id = 2022 })
 <div class="row">
 
 

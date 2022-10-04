@@ -18,17 +18,19 @@ namespace WebApplicationDemoMVC.Controllers
                 //var model = new WebApplicationDemoMVC.Models.StudentModel();
                 //list = model.Students.ToList();
 
-                var context = new EntitiFrameWorkMigration.DAOImpl.StudentDAOImpl();
-                var data = context.GetAllStudents();
-                if (data != null && data.Count > 0)
-                {
-                    foreach (var item in data)
-                    {
-                        list.Add(new Models.Student { Id = item.Id, Name = item.Name });
-                    }
-                }
+                //var context = new EntitiFrameWorkMigration.DAOImpl.StudentDAOImpl();
+                //var data = context.GetAllStudents();
+                //if (data != null && data.Count > 0)
+                //{
+                //    foreach (var item in data)
+                //    {
+                //        list.Add(new Models.Student { Id = item.Id, Name = item.Name });
+                //    }
+                //}
 
-               
+                // Response.Redirect("https://www.google.com/?hl=vi");
+
+                //return RedirectToAction("MyAction", "Home", new { name = "quan", id = 2022 });
 
             }
             catch (Exception ex)
@@ -37,6 +39,13 @@ namespace WebApplicationDemoMVC.Controllers
                 throw;
             }
             return View(list);
+        }
+
+        public ActionResult MyAction(string name, int id)
+        {
+            ViewBag.Name = name;
+            ViewBag.ID = id;
+            return View();
         }
 
         public ActionResult About()
