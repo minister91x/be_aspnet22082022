@@ -50,7 +50,26 @@ namespace EntitiFrameWorkMigration.DAOImpl
 
         public int Student_Delete(int StudentId)
         {
-            throw new NotImplementedException();
+            var result = 0;
+            try
+            {
+                var student_database = studentContext.student.ToList().FindAll(s => s.Id == StudentId).FirstOrDefault();
+               
+                if (student_database == null && student_database.Id <= 0)
+                {
+                    result = -1;
+                    return result;
+                }
+
+                studentContext.student.Remove(student_database);
+                result = studentContext.SaveChanges();
+
+            }
+            catch (Exception ex)
+            {
+                result = -969;
+            }
+            return result;
         }
 
         public Student Student_GetByID(int StudentId)

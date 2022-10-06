@@ -27,7 +27,8 @@
                     <tr>
                         <td>@item.Id</td>
                         <td>@item.Name</td>
-                        <td><a href="/trang-chi-tiet-@item.Name/@item.Id">Views Detail </a></td>
+                        <td><a href="@Url.Action("Edit","Student",new {name=item.Name, id=item.Id})" class="badge badge-warning">edit</a></td>
+                        <td><a href="@Url.Action("Delete","Student",new {id=item.Id})" class="badge badge-danger">delete</a></td>
                     </tr>
 
                 }

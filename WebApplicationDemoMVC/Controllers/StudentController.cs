@@ -15,11 +15,30 @@ namespace WebApplicationDemoMVC.Controllers
 
             // return View();
 
-            return Json(new { stuatus = 1, description = " Trả về Json Thành công!" }, JsonRequestBehavior.AllowGet);
+            //return Json(new { stuatus = 1, description = " Trả về Json Thành công!" }, JsonRequestBehavior.AllowGet);
 
-            // return View();
+            return View();
 
-            var abc = GetById2(10);
+            // var abc = GetById2(10);
+        }
+
+        public ActionResult Edit(string name, int id)
+        {
+            return RedirectToAction("MyAction", "Home", new { name = name, id = id });
+        }
+
+        public ActionResult Delete(int id)
+        {
+            if (id < 0)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            var context = new EntitiFrameWorkMigration.DAOImpl.StudentDAOImpl();
+
+            var rs = context.Student_Delete(id);
+
+            return RedirectToAction("Index", "Home");
+
         }
 
         [ActionName("find")] //   Chỉ định tên thay thế của phương thức hành động
@@ -48,7 +67,7 @@ namespace WebApplicationDemoMVC.Controllers
 
         }
 
-        
+
         public ActionResult StudentInsertUpdate(int? id)
         {
             //return View();
