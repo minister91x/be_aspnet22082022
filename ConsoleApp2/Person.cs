@@ -16,5 +16,8 @@ namespace ConsoleApp2
         /// biểu diễn địa chỉ của 1 người
         /// </summary>
         public string address { get; set; }
+
+        public decimal ProductCosIn { get; set; }
+        public decimal ProductCosOut { get { return ProductCosIn * Convert.ToDecimal(1.5); } }
     }
 }

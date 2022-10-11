@@ -5,3 +5,74 @@
 <h3>@ViewBag.Message</h3>
 
 <p>Use this area to provide additional information.</p>
+@Html.Action("DemoPartial", "Home", new { ViewNameInput = "About", ViewNameInput2 = "Bien2" })
+<div id="PartialData"></div>
+<div class="form-group">
+    <input type="text" id="txtUserName" placeholder="nhập tên" class="form-control" />
+    <button type="button" class="btn btn-primary" id="btnSend">Send </button>
+    <span style="color:red" id="notification"></span>
+</div>
+<script>
+    $(document).ready(function () {
+        //  LoadPartialView();
+
+        $("#btnSend").click(function () {
+            debugger;
+            var userName = $("#txtUserName").val();
+            SendData(userName)
+        });
+    });
+
+    function SendData(userName) {
+        var reqestData = {
+            UserName: userName
+        };
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/Home/SaveData",
+            data: JSON.stringify(reqestData),
+            dataType: 'json',
+            success: function (data) {
+                var res = data.ReturnCode;
+                var mes = data.ReturnMessenger;
+                //if (res > 0) {
+                //    $("#notification").show();
+                //    $("#notification").html(mes);
+                //}
+                alert(mes);
+            },
+            error: function (e) {
+
+                console.log("ERROR : ", e);
+            }
+        });
+
+    }
+
+    function LoadPartialView() {
+        var reqestData = {
+            ViewName: 'About1234'
+        };
+
+        $.ajax({
+            type: "GET",
+            /*  contentType: "application/json",*/
+            contentType: "html",
+            url: "/Home/DemoPartial",
+            data: reqestData,
+            /* dataType: 'json',*/
+            cache: false,
+            success: function (data) {
+                $("#PartialData").html(data);
+            },
+            error: function (e) {
+
+                console.log("ERROR : ", e);
+            }
+        });
+
+    }
+
+</script>

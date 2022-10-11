@@ -9,6 +9,7 @@ namespace WebApplicationDemoMVC.Controllers
     public class StudentController : Controller
     {
         // GET: Student
+        [OutputCache(Duration = 100)]
         public ActionResult Index(int? a, long? b)
         {
             //return View();
@@ -18,7 +19,7 @@ namespace WebApplicationDemoMVC.Controllers
             //return Json(new { stuatus = 1, description = " Trả về Json Thành công!" }, JsonRequestBehavior.AllowGet);
 
             return View();
-
+           // return PartialView();
             // var abc = GetById2(10);
         }
 
@@ -86,8 +87,9 @@ namespace WebApplicationDemoMVC.Controllers
         {
             int? a = null;
 
-            return Json(new { stuatus = 1, description = " Trả về Json Thành công!" }, JsonRequestBehavior.AllowGet);
+          return Json(new { stuatus = 1, description = " Trả về Json Thành công!" }, JsonRequestBehavior.AllowGet);
 
+           /// return View();
         }
     }
 }

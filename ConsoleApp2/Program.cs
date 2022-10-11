@@ -11,7 +11,7 @@ namespace ConsoleApp2
         static void Main(string[] args)
         {
             var conection = DBHelper.GetSqlConnection();
-
+           
         }
     }
 }
