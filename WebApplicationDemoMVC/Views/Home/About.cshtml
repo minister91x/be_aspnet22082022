@@ -5,7 +5,7 @@
 <h3>@ViewBag.Message</h3>
 
 <p>Use this area to provide additional information.</p>
-@Html.Action("DemoPartial", "Home", new { ViewNameInput = "About", ViewNameInput2 = "Bien2" })
+@Html.Action("DemoPartial", "Home", new { ViewNameInput = "About", ViewNameInput2 = "Bien2" ,Page=1})
 <div id="PartialData"></div>
 <div class="form-group">
     <input type="text" id="txtUserName" placeholder="nhập tên" class="form-control" />
@@ -52,7 +52,7 @@
 
     }
 
-    function LoadPartialView() {
+    function LoadPartialView(page) {
         var reqestData = {
             ViewName: 'About1234'
         };
