@@ -16,33 +16,29 @@ namespace WebApplicationDemoMVC.Controllers
             ///var list = new List<Models.Student>();
 
             var list = new List<WebApplicationDemoMVC.Models.Student>();
-            //try
-            //{
-            //var model = new WebApplicationDemoMVC.Models.StudentModel();
-            //list = model.Students.ToList();
+            try
+            {
+                var model = new WebApplicationDemoMVC.Models.StudentModel();
+                list = model.Students.ToList();
 
-            //var context = new EntitiFrameWorkMigration.DAOImpl.StudentDAOImpl();
-            //var data = context.GetAllStudents();
-            //if (data != null && data.Count > 0)
-            //{
-            //    foreach (var item in data)
-            //    {
-            //        list.Add(new Models.Student { Id = item.Id, Name = item.Name });
-            //    }
-            //}
+                var context = new EntitiFrameWorkMigration.DAOImpl.StudentDAOImpl();
+                var data = context.GetAllStudents();
+                if (data != null && data.Count > 0)
+                {
+                    foreach (var item in data)
+                    {
+                        list.Add(new Models.Student { Id = item.Id, Name = item.Name });
+                    }
+                }
 
-            // Response.Redirect("https://www.google.com/?hl=vi");
+               
 
-            //return RedirectToAction("MyAction", "Home", new { name = "quan", id = 2022 });
+            }
+            catch (Exception ex)
+            {
 
-            //throw new Exception("This is unhandled exception");
-
-            //}
-            //catch (Exception ex)
-            //{
-
-            //    throw;
-            //}
+                throw;
+            }
             return View(list);
         }
 
@@ -62,6 +58,30 @@ namespace WebApplicationDemoMVC.Controllers
             return View();
         }
 
+        public ActionResult StudentInsertUpdate(int? id)
+        {
+            var model = new WebApplicationDemoMVC.Models.Student();
+            var id_input = Convert.ToInt32(id);
+            if (id_input > 0)
+            {
+                // update
+
+                var context = new EntitiFrameWorkMigration.DAOImpl.StudentDAOImpl();
+                var data = context.GetAllStudents();
+               var st= data.FindAll(s => s.Id == id_input).ToList().FirstOrDefault();
+                if (st != null && st.Id > 0)
+                {
+                    model.Id = st.Id;
+                    model.Name = st.Name;
+                }
+            }
+            else
+            {
+                // insert
+            }
+            return View(model);
+        }
+
 
         public ActionResult DemoPartial(string ViewNameInput, string ViewNameInput2)
         {
@@ -71,18 +91,35 @@ namespace WebApplicationDemoMVC.Controllers
             return PartialView("~/Views/Home/Partial/DemoPartial.cshtml", model);
         }
 
-        public JsonResult SaveData(string UserName)
+        public JsonResult SaveData(int id ,string UserName)
         {
             var model = new ReturnData();
             if (string.IsNullOrEmpty(UserName))
             {
                 model.ReturnCode = -1;
-                model.ReturnMessenger = "Thêm thất bại!";
+                model.ReturnMessenger = "UserName không được trống!";
                 return Json(model, JsonRequestBehavior.AllowGet);
+            }
+
+            if (id > 0)
+            {
+                // gọi database để cập nhật lại dữ liệu
+            }
+            else
+            {
+                // gọi vào database để thêm mới 
             }
 
             model.ReturnCode = 1;
             model.ReturnMessenger = "Thêm thành công!";
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Delete(int id)
+        {
+            var model = new ReturnData();
+            model.ReturnCode = 1;
+            model.ReturnMessenger = "Xóa thành công!";
             return Json(model, JsonRequestBehavior.AllowGet);
         }
 

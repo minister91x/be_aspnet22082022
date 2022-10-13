@@ -4,11 +4,14 @@
 @*@model List<WebApplicationDemoMVC.Models.Student>*@
 @model List<WebApplicationDemoMVC.Models.Student>
 @*<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>*@
-<button type="button" class="btn btn-info btn-lg" id="btnShowPopup">Open Modal</button>
-<a href="/home/MyAction/ten-2022"> Bấm vào đây </a>
+@*<button type="button" class="btn btn-info btn-lg" id="btnShowPopup">Open Modal</button>*@
+@*<a href="/home/MyAction/ten-2022"> Bấm vào đây </a>*@
+<a href="/home/StudentInsertUpdate">Insert</a>
+<a >Xóa tất cả</a>
     <table class="table">
         <thead>
             <tr>
+                <th><input type="checkbox" id="chkDelete1" /></th>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Action</th>
@@ -20,11 +23,12 @@
                 foreach (var item in Model)
                 {
                     <tr>
+                        <td><input type="checkbox" id="chkDelete"/></td>
                         <td>@item.Id</td>
                         <td>@item.Name</td>
                         <td>duyphong@gmail.com</td>
-                        <td><a href="@Url.Action("Edit","Student",new {name=item.Name, id=item.Id})" class="badge badge-warning">edit</a></td>
-                        <td><a href="@Url.Action("Delete","Student",new {id=item.Id})" class="badge badge-danger">delete</a></td>
+                        <td><a href="/home/StudentInsertUpdate?id=@item.Id" class="badge badge-warning">edit</a></td>
+                        <td><a onclick="StudentDelete(@item.Id)" class="badge badge-danger">delete</a></td>
                     </tr>
 
                 }
@@ -67,4 +71,45 @@
            // $("#myModal").modal("hide"); // hide popup
         });
     });
+
+    function StudentDelete(id) {
+
+        var res = confirm("Bạn có chắc chắn muốn xóa bản ghi này không ?!");
+        if (res == true) {
+            DeleteStudent(id);
+        } 
+    }
+
+    function DeleteStudent(id) {
+        debugger;
+        var reqestData = {
+            id: id,
+           
+        };
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/Home/Delete",
+            data: JSON.stringify(reqestData),
+            dataType: 'json',
+            success: function (data) {
+                var res = data.ReturnCode;
+                var mes = data.ReturnMessenger;
+
+                alert(mes);
+
+                //if (res > 0) {
+                //    $("#notification").show();
+                //    $("#notification").html(mes);
+                //}
+                LoadPartialView();
+            },
+            error: function (e) {
+
+                console.log("ERROR : ", e);
+            }
+        });
+
+    }
 </script>

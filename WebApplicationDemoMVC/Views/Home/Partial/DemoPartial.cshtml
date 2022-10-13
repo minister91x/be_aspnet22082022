@@ -1,2 +1,28 @@
-﻿@model WebApplicationDemoMVC.Models.DemoPartialModels
-<h1>This is Partial View On  <span style="color:red"> @Model.VariableName</span> Page </h1>
+﻿@model List<WebApplicationDemoMVC.Models.Student>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>duyphong@gmail.com</td>
+                    <td><a href="@Url.Action("Edit","Student",new {name=item.Name, id=item.Id})" class="badge badge-warning">edit</a></td>
+                    <td><a href="@Url.Action("Delete","Student",new {id=item.Id})" class="badge badge-danger">delete</a></td>
+                </tr>
+
+            }
+        }
+
+
+    </tbody>
+</table>

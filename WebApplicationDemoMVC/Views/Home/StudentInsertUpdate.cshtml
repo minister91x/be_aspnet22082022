@@ -1,33 +1,16 @@
-﻿@{
-    ViewBag.Title = "About";
+﻿
+@{
+    ViewBag.Title = "StudentInsertUpdate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+@model WebApplicationDemoMVC.Models.Student
 
-<p>Use this area to provide additional information.</p>
-@*@Html.Action("DemoPartial", "Home", new { ViewNameInput = "About", ViewNameInput2 = "Bien2"})*@
-<div id="PartialData"></div>
-<a href="/home/StudentInsertUpdate">Insert</a>
+<div class="form-group">
+    <input type="hidden" id="txtStudetId" value="@Model.Id"/>
+    <input type="text" id="txtUserName" placeholder="nhập tên" class="form-control" value="@Model.Name"/>
+    <input type="text" id="txtEmail" placeholder="nhập tên" class="form-control" />
+    <button type="button" class="btn btn-primary" id="btnSend">Cập nhật </button>
 
-<div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Thông báo</h4>
-            </div>
-            <div class="modal-body">
-                <p id="p1" style="display:none"></p>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-
-    </div>
 </div>
 <script>
     $(document).ready(function () {
@@ -43,6 +26,7 @@
     function SendData(userName) {
         debugger;
         var reqestData = {
+            id: $("#txtStudetId").val(),
             UserName: userName
         };
 
@@ -105,3 +89,4 @@
     }
 
 </script>
+

@@ -189,6 +189,7 @@
     <Content Include="Views\Home\CustomUseLayOut.cshtml" />
     <Content Include="Views\Home\CustomUseLayOut2.cshtml" />
     <Content Include="Views\Home\PartViewNoAction.cshtml" />
+    <Content Include="Views\Home\StudentInsertUpdate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
