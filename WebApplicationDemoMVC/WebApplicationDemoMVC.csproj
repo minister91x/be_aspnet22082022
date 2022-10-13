@@ -185,6 +185,10 @@
     <Content Include="Views\Student\Index1.cshtml" />
     <Content Include="Views\Home\Partial\HeaderPartial.cshtml" />
     <Content Include="Views\Home\Partial\DemoPartial.cshtml" />
+    <Content Include="Views\Shared\LayOutLogin.cshtml" />
+    <Content Include="Views\Home\CustomUseLayOut.cshtml" />
+    <Content Include="Views\Home\CustomUseLayOut2.cshtml" />
+    <Content Include="Views\Home\PartViewNoAction.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

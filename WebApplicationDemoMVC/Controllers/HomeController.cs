@@ -52,6 +52,17 @@ namespace WebApplicationDemoMVC.Controllers
         }
 
 
+        public ActionResult CustomUseLayOut()
+        {
+            return View();
+        }
+
+        public ActionResult CustomUseLayOut2()
+        {
+            return View();
+        }
+
+
         public ActionResult DemoPartial(string ViewNameInput, string ViewNameInput2)
         {
             var model = new DemoPartialModels();
