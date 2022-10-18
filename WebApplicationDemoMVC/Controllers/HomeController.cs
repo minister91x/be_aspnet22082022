@@ -31,7 +31,7 @@ namespace WebApplicationDemoMVC.Controllers
                     }
                 }
 
-               
+
 
             }
             catch (Exception ex)
@@ -47,6 +47,24 @@ namespace WebApplicationDemoMVC.Controllers
             return PartialView("~/Views/Home/Partial/HeaderPartial.cshtml");
         }
 
+        public ActionResult PoupEdit(int id)
+        {
+            var model = new WebApplicationDemoMVC.Models.Student();
+            var id_input = Convert.ToInt32(id);
+            if (id_input > 0)
+            {
+                var context = new EntitiFrameWorkMigration.DAOImpl.StudentDAOImpl();
+                var data = context.GetAllStudents();
+                var st = data.FindAll(s => s.Id == id).ToList().FirstOrDefault();
+                if (st != null && st.Id > 0)
+                {
+                    model.Id = st.Id;
+                    model.Name = st.Name;
+                }
+
+            }
+            return PartialView("~/Views/Home/Partial/PoupEdit.cshtml", model);
+        }
 
         public ActionResult CustomUseLayOut()
         {
@@ -68,7 +86,7 @@ namespace WebApplicationDemoMVC.Controllers
 
                 var context = new EntitiFrameWorkMigration.DAOImpl.StudentDAOImpl();
                 var data = context.GetAllStudents();
-               var st= data.FindAll(s => s.Id == id_input).ToList().FirstOrDefault();
+                var st = data.FindAll(s => s.Id == id_input).ToList().FirstOrDefault();
                 if (st != null && st.Id > 0)
                 {
                     model.Id = st.Id;
@@ -91,7 +109,7 @@ namespace WebApplicationDemoMVC.Controllers
             return PartialView("~/Views/Home/Partial/DemoPartial.cshtml", model);
         }
 
-        public JsonResult SaveData(int id ,string UserName)
+        public JsonResult SaveData(int id, string UserName)
         {
             var model = new ReturnData();
             if (string.IsNullOrEmpty(UserName))
