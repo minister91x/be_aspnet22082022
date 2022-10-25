@@ -84,3 +84,5 @@ C:\Users\Admin\source\repos\ConsoleAppDemo\WebApplicationDemoMVC\obj\Debug\WebAp
 C:\Users\Admin\source\repos\ConsoleAppDemo\WebApplicationDemoMVC\bin\EntitiFrameWorkMigration.exe
 C:\Users\Admin\source\repos\ConsoleAppDemo\WebApplicationDemoMVC\bin\EntitiFrameWorkMigration.pdb
 C:\Users\Admin\source\repos\ConsoleAppDemo\WebApplicationDemoMVC\bin\EntitiFrameWorkMigration.exe.config
+C:\Users\Admin\source\repos\ConsoleAppDemo\WebApplicationDemoMVC\bin\ClassLibrary1123.dll
+C:\Users\Admin\source\repos\ConsoleAppDemo\WebApplicationDemoMVC\bin\ClassLibrary1123.pdb

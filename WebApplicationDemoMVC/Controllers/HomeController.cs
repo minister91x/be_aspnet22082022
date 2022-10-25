@@ -14,6 +14,10 @@ namespace WebApplicationDemoMVC.Controllers
         public ActionResult Index()
         {
             ///var list = new List<Models.Student>();
+            if (Session["SessionLogin"] == null || (string)Session["SessionLogin"] == "")
+            {
+                return RedirectToAction("Login", "Account");
+            }
 
             var list = new List<WebApplicationDemoMVC.Models.Student>();
             try
@@ -78,6 +82,8 @@ namespace WebApplicationDemoMVC.Controllers
 
         public ActionResult StudentInsertUpdate(int? id)
         {
+
+
             var model = new WebApplicationDemoMVC.Models.Student();
             var id_input = Convert.ToInt32(id);
             if (id_input > 0)
@@ -109,17 +115,41 @@ namespace WebApplicationDemoMVC.Controllers
             return PartialView("~/Views/Home/Partial/DemoPartial.cshtml", model);
         }
 
-        public JsonResult SaveData(int id, string UserName)
+        [HttpPost]
+        public ActionResult StudentInsertUpdate(UserNameModelInput input)
         {
+            var model = new WebApplicationDemoMVC.Models.Student();
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            return View(model);
+        }
+
+        public JsonResult SaveData(UserNameModelInput input)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Json(input);
+            }
+
             var model = new ReturnData();
-            if (string.IsNullOrEmpty(UserName))
+            if (input == null)
+            {
+                model.ReturnCode = -100;
+                model.ReturnMessenger = "Dữ liệu đầu vào không được trống!";
+                return Json(model, JsonRequestBehavior.AllowGet);
+            }
+
+            if (string.IsNullOrEmpty(input.Name))
             {
                 model.ReturnCode = -1;
                 model.ReturnMessenger = "UserName không được trống!";
                 return Json(model, JsonRequestBehavior.AllowGet);
             }
 
-            if (id > 0)
+            if (input.Id > 0)
             {
                 // gọi database để cập nhật lại dữ liệu
             }

@@ -1,0 +1,13 @@
+C:\Users\Admin\source\repos\ConsoleAppDemo\ConsoleAppMG\bin\Debug\ConsoleAppMG.exe.config
+C:\Users\Admin\source\repos\ConsoleAppDemo\ConsoleAppMG\bin\Debug\ConsoleAppMG.exe
+C:\Users\Admin\source\repos\ConsoleAppDemo\ConsoleAppMG\bin\Debug\ConsoleAppMG.pdb
+C:\Users\Admin\source\repos\ConsoleAppDemo\ConsoleAppMG\bin\Debug\EntityFramework.dll
+C:\Users\Admin\source\repos\ConsoleAppDemo\ConsoleAppMG\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Admin\source\repos\ConsoleAppDemo\ConsoleAppMG\bin\Debug\EntityFramework.xml
+C:\Users\Admin\source\repos\ConsoleAppDemo\ConsoleAppMG\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Admin\source\repos\ConsoleAppDemo\ConsoleAppMG\obj\Debug\ConsoleAppMG.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\ConsoleAppDemo\ConsoleAppMG\obj\Debug\ConsoleAppMG.csproj.SuggestedBindingRedirects.cache
+C:\Users\Admin\source\repos\ConsoleAppDemo\ConsoleAppMG\obj\Debug\ConsoleAppMG.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\ConsoleAppDemo\ConsoleAppMG\obj\Debug\ConsoleAppMG.csproj.CopyComplete
+C:\Users\Admin\source\repos\ConsoleAppDemo\ConsoleAppMG\obj\Debug\ConsoleAppMG.exe
+C:\Users\Admin\source\repos\ConsoleAppDemo\ConsoleAppMG\obj\Debug\ConsoleAppMG.pdb
