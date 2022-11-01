@@ -14,16 +14,16 @@ namespace EntitiFrameWorkMigration.UnitWork
         private StudentRepository _studentRepository;
         private StudentModels _entities;
 
-        //public UnitWork(StudentModels Entities)
-        //{
-        //    _entities = Entities;
-        //}
-
-        public UnitWork(CustomerReporsitory customerReporsitory, OrderRepository orderRepository)
+        public UnitWork(StudentModels Entities)
         {
-            _customerReporsitory = customerReporsitory;
-            _orderRepository = orderRepository;
+            _entities = Entities;
         }
+
+        //public UnitWork(CustomerReporsitory customerReporsitory, OrderRepository orderRepository)
+        //{
+        //    _customerReporsitory = customerReporsitory;
+        //    _orderRepository = orderRepository;
+        //}
         public CustomerReporsitory CusRepo
         {
             get
