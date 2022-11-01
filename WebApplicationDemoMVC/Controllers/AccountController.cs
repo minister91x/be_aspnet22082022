@@ -17,7 +17,13 @@ namespace WebApplicationDemoMVC.Controllers
         public ActionResult Login()
         {
             // gọi vào database check xem tài khoản này ko 
-            Session["SessionLogin"] = "quannt";
+            //Login xong mới tạo session
+            //if(dăng nhập xong){
+            //    Session["SessionLogin"] = "quannt";
+            //}
+
+            var sessionValue = Session["SessionLogin"] == null ? "" : Session["SessionLogin"].ToString();
+            
             var pass_encrypt = ClassLibrary1123.Security.sHA256_EnCrypt("quannt", "BI_MAT_!@#");
             return View();
         }

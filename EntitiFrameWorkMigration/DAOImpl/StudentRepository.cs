@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EntitiFrameWorkMigration.DAOImpl
 {
-    public class StudentDAOImpl : IStudentDAO
+    public class StudentRepository : IStudentDAO
     {
         StudentModels studentContext = new StudentModels();
         public List<Student> GetAllStudents()

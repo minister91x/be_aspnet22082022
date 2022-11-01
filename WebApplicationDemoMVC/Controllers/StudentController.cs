@@ -34,7 +34,7 @@ namespace WebApplicationDemoMVC.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            var context = new EntitiFrameWorkMigration.DAOImpl.StudentDAOImpl();
+            var context = new EntitiFrameWorkMigration.DAOImpl.StudentRepository();
 
             var rs = context.Student_Delete(id);
 

@@ -25,7 +25,7 @@ namespace WebApplicationDemoMVC.Controllers
                 var model = new WebApplicationDemoMVC.Models.StudentModel();
                 list = model.Students.ToList();
 
-                var context = new EntitiFrameWorkMigration.DAOImpl.StudentDAOImpl();
+                var context = new EntitiFrameWorkMigration.DAOImpl.StudentRepository();
                 var data = context.GetAllStudents();
                 if (data != null && data.Count > 0)
                 {
@@ -57,8 +57,30 @@ namespace WebApplicationDemoMVC.Controllers
             var id_input = Convert.ToInt32(id);
             if (id_input > 0)
             {
-                var context = new EntitiFrameWorkMigration.DAOImpl.StudentDAOImpl();
-                var data = context.GetAllStudents();
+                // var context = new EntitiFrameWorkMigration.DAOImpl.StudentDAOImpl();
+                var context = new EntitiFrameWorkMigration.UnitWork.UnitWork(new EntitiFrameWorkMigration.StudentModels());
+
+                var data = context.studentRepo.GetAllStudents();
+
+                var cus = new EntitiFrameWorkMigration.DAO.Customer
+                {
+                    Id = 1,
+                    Name = ""
+                };
+
+                var orderr = new EntitiFrameWorkMigration.DAO.Order
+                {
+                    Id = 1,
+                    MaDH = "DH_001",
+                    TotalAmount = 10000
+                };
+
+
+                context.orderRepo.Add(orderr);
+                context.CusRepo.Add(cus);
+                context.Save();
+
+
                 var st = data.FindAll(s => s.Id == id).ToList().FirstOrDefault();
                 if (st != null && st.Id > 0)
                 {
@@ -90,7 +112,7 @@ namespace WebApplicationDemoMVC.Controllers
             {
                 // update
 
-                var context = new EntitiFrameWorkMigration.DAOImpl.StudentDAOImpl();
+                var context = new EntitiFrameWorkMigration.DAOImpl.StudentRepository();
                 var data = context.GetAllStudents();
                 var st = data.FindAll(s => s.Id == id_input).ToList().FirstOrDefault();
                 if (st != null && st.Id > 0)

@@ -21,6 +21,10 @@ namespace EntitiFrameWorkMigration
 
         public virtual DbSet<Student> student { get; set; }
 
+        public virtual DbSet<Customer> customer { get; set; }
+        public virtual DbSet<Order> order { get; set; }
         public virtual DbSet<Grade> grade { get; set; }
+
+
     }
 }

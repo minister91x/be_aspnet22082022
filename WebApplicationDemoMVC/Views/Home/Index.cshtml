@@ -33,7 +33,7 @@ GIỜ HIỆN TẠI : @dateNow.Hour
 <style>
     .li_border {
         border: 1px solid;
-        border-radius:5px;
+        border-radius: 5px;
     }
 </style>
 <input type="text" id="txtKeySearch" class="form-control" />
@@ -47,6 +47,11 @@ GIỜ HIỆN TẠI : @dateNow.Hour
 </select>
 <a href="/home/StudentInsertUpdate">Insert</a>
 <a>Xóa tất cả</a>
+
+<button class="btn btn-success" onclick="LogOut()">LogOut</button>
+
+<a href="/Account/LogOut">LogOut</a>
+
 <table class="table">
     <thead>
         <tr>
@@ -111,7 +116,7 @@ GIỜ HIỆN TẠI : @dateNow.Hour
         $("#txtKeySearch").keyup(function () {
             //alert($(this).val());
             var data_input = $(this).val();
-            
+
             var html_li = "";
             $("#lst_suggestion").html("");
 
@@ -132,6 +137,10 @@ GIỜ HIỆN TẠI : @dateNow.Hour
 
         var ddlValues = $("#ddlHocLuc").val();
     });
+
+    function LogOut() {
+        window.location.href = "/Account/LogOut"
+    }
     function ShowPopUpEdit(id) {
         var reqestData = {
             id: id,
