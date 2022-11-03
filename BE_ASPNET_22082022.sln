@@ -8,6 +8,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{2C921DA0-2083-4F92-B263-3EFA207DB8FC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationDemo", "WebApplicationDemo\WebApplicationDemo.csproj", "{C195E153-4576-4412-88A3-B6C160BF813F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9F3F8CFF-608C-4385-A61E-C5FC02906EC5} = {9F3F8CFF-608C-4385-A61E-C5FC02906EC5}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntitiFrameWorkMigration", "EntitiFrameWorkMigration\EntitiFrameWorkMigration.csproj", "{BA528C78-E335-40F5-B65C-7F38E0D146C8}"
 EndProject
@@ -20,6 +23,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp_Demo", "WebApp_Demo\WebApp_Demo.csproj", "{887BE9BF-2278-4464-AF53-40D21061CEAD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1123", "ClassLibrary1123\ClassLibrary1123.csproj", "{CC383342-C397-4AC5-BE1C-7113ABDE8861}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{65EE0836-CB17-4CC7-B222-D29F83A77BBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfServiceDemo", "WcfServiceDemo\WcfServiceDemo.csproj", "{9F3F8CFF-608C-4385-A61E-C5FC02906EC5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +70,14 @@ Global
 		{CC383342-C397-4AC5-BE1C-7113ABDE8861}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC383342-C397-4AC5-BE1C-7113ABDE8861}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC383342-C397-4AC5-BE1C-7113ABDE8861}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65EE0836-CB17-4CC7-B222-D29F83A77BBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65EE0836-CB17-4CC7-B222-D29F83A77BBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65EE0836-CB17-4CC7-B222-D29F83A77BBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65EE0836-CB17-4CC7-B222-D29F83A77BBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F3F8CFF-608C-4385-A61E-C5FC02906EC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F3F8CFF-608C-4385-A61E-C5FC02906EC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F3F8CFF-608C-4385-A61E-C5FC02906EC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F3F8CFF-608C-4385-A61E-C5FC02906EC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

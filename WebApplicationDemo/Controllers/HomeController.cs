@@ -10,7 +10,9 @@ namespace WebApplicationDemo.Controllers
     {
         public ActionResult Index()
         {
-          
+            var services = new DemoServices.Service1Client().GetData(1);
+
+
             return View();
        
         }
