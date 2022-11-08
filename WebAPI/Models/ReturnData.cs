@@ -13,6 +13,8 @@ namespace WebAPI.Models
 
     public class StudentGetAllReturnData: ReturnData
     {
-       public List<Person> lstPerson { get; set; }
+        public List<Student> lstPerson { get; set; }
     }
+
+   
 }

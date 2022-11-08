@@ -11,8 +11,20 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
+@{
+    var isShow = 0;
+    var url = Request.Url.AbsoluteUri;
+    var url1 = Request.RawUrl ;// đường dẫn ở dạng đã router
+    if (!url.Contains("About"))
+    {
+        isShow = 1;
+    }
+}
 <body>
-    @Html.Action("HeaderPartial","Home")
+    @Html.Action("HeaderPartial", "Home")
+    <div style="@(isShow==1?"display:block":"display:none")">
+        @Html.Action("IndexPartial", "Common");
+    </div>
     <div class="container body-content">
         @RenderBody()
         <hr />

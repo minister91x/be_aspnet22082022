@@ -14,10 +14,10 @@ namespace WebApplicationDemoMVC.Controllers
         public ActionResult Index()
         {
             ///var list = new List<Models.Student>();
-            if (Session["SessionLogin"] == null || (string)Session["SessionLogin"] == "")
-            {
-                return RedirectToAction("Login", "Account");
-            }
+            //if (Session["SessionLogin"] == null || (string)Session["SessionLogin"] == "")
+            //{
+            //    return RedirectToAction("Login", "Account");
+            //}
 
             var list = new List<WebApplicationDemoMVC.Models.Student>();
             try

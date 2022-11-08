@@ -11,6 +11,10 @@ namespace WebAPI.Controllers
     public class StudentController : ApiController
     {
         // GET: api/Student
+        /// <summary>
+        /// Hàm này trả về danh sách abc 
+        /// </summary>
+        /// <returns>stringabcs</returns>
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
@@ -19,19 +23,25 @@ namespace WebAPI.Controllers
         public StudentGetAllReturnData GetAll(string token)
         {
             var retunData = new StudentGetAllReturnData();
-            var sign = ClassLibrary1123.Security.sHA256_EnCrypt("quannt", "BI_MAT_!@#");
-            
-            if (string.IsNullOrEmpty(token) || token != sign)
-            {
-                retunData.Code = -1;
-                retunData.Desc = "token không hợp lệ";
-                return retunData;
-            }
+            var studentRepo = new WebAPI.Entites.StudentModels();
+            //var sign = ClassLibrary1123.Security.sHA256_EnCrypt("quannt", "BI_MAT_!@#");
 
-            var list = new List<Person>();
-            for (int i = 0; i < 10; i++)
+            //if (string.IsNullOrEmpty(token) || token != sign)
+            //{
+            //    retunData.Code = -1;
+            //    retunData.Desc = "token không hợp lệ";
+            //    return retunData;
+            //}
+
+            var list = new List<Student>();
+            var lst = studentRepo.Students;
+            if (lst.Count() > 0)
             {
-                list.Add(new Person { Id = i, Name = "Number :" + i });
+                foreach (var item in lst)
+                {
+                    list.Add(new Student { Id = item.Id, Name = item.Name });
+                }
+
             }
             retunData.Code = 1;
             retunData.Desc = "ok";
