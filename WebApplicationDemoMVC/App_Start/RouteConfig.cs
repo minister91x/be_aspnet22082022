@@ -19,6 +19,12 @@ namespace WebApplicationDemoMVC
                defaults: new { controller = "Home", action = "MyAction", name = UrlParameter.Optional, id = UrlParameter.Optional }
                );
 
+            routes.MapRoute(
+            name: "Chi-Tiet-Hoc-Vien",
+            url: "thong-tin-hoc-vien/{name}-{id}",
+            defaults: new { controller = "Home", action = "StudentInsertUpdate", name = UrlParameter.Optional, id = UrlParameter.Optional }
+            );
+
             //routes.MapRoute(
             //    name: "MyRouter",
             //    url: "{controller}/{action}/{name}/{id}",
