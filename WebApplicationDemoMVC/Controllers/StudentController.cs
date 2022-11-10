@@ -69,7 +69,7 @@ namespace WebApplicationDemoMVC.Controllers
         }
 
 
-        public ActionResult StudentInsertUpdate(int? id)
+        public ActionResult StudentInsertUpdate(string name ,int? id)
         {
             //return View();
 

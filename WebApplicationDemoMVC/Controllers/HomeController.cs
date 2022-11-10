@@ -102,7 +102,7 @@ namespace WebApplicationDemoMVC.Controllers
             return View();
         }
 
-        public ActionResult StudentInsertUpdate(int? id)
+        public ActionResult StudentInsertUpdate(string product_type ,string name ,int? id)
         {
 
 

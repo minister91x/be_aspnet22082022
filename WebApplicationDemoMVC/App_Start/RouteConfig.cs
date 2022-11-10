@@ -21,10 +21,15 @@ namespace WebApplicationDemoMVC
 
             routes.MapRoute(
             name: "Chi-Tiet-Hoc-Vien",
-            url: "thong-tin-hoc-vien/{name}-{id}",
-            defaults: new { controller = "Home", action = "StudentInsertUpdate", name = UrlParameter.Optional, id = UrlParameter.Optional }
+            url: "{name}-{id}",
+            defaults: new { controller = "Home", action = "StudentInsertUpdate", product_type = 1000, name = UrlParameter.Optional, id = UrlParameter.Optional }
             );
 
+            routes.MapRoute(
+            name: "Chi-Tiet-Danh-Muc",
+            url: "danh-muc-{catname}-{catid}",
+            defaults: new { controller = "Home", action = "MyAction", product_type = 10, catname = UrlParameter.Optional, catid = UrlParameter.Optional }
+            );
             //routes.MapRoute(
             //    name: "MyRouter",
             //    url: "{controller}/{action}/{name}/{id}",
