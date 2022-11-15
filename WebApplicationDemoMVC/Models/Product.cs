@@ -8,14 +8,14 @@ namespace WebApplicationDemoMVC.Models
     public class Product
     {
         public int ProductId { get; set; }
-        public int ProductName { get; set; }
+        public string ProductName { get; set; }
         public int ParentId { get; set; }
         public int CatID { get; set; }
         public int Price { get; set; }
         public int PriceSale { get; set; }
         public int FeeShip { get; set; }
-        public int ShortDescription { get; set; }
-        public int FullDescription { get; set; }
+        public string ShortDescription { get; set; }
+        public string FullDescription { get; set; }
         public int MetaKeyWord { get; set; }
         public int MetDescription { get; set; }
         public int IsActive { get; set; }

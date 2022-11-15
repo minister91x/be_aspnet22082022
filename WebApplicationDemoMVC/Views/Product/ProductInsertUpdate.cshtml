@@ -1,0 +1,599 @@
+﻿
+@{
+    ViewBag.Title = "ProductInsertUpdate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var media_url = "http://localhost:51227/";
+    var listCate = ViewBag.ListCategory != null ? (List<WebApplicationDemoMVC.Models.Category>)ViewBag.ListCategory : new List<WebApplicationDemoMVC.Models.Category>();
+}
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Quản lý sản phẩm</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">General Form</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Thêm mới</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="col-md-4" for="exampleInputEmail1">Tên sản phẩm</label>
+                                <input type="hidden" id="txtProductId" value="@Model.ProductId" />
+                                <input type="text" maxlength="200" class="form-control col-md-7" id="txtProductName" placeholder="Nhập tên sản phẩm">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4" for="exampleInputEmail1">Danh mục sản phẩm</label>
+                                <select id="ddlCatId" class="form-control col-md-3">
+                                    <option value="0">-Chọn danh mục-</option>
+                                    @if (listCate != null && listCate.Count > 0)
+                                    {
+                                        foreach (var item in listCate)
+                                        {
+                                            <option value="@item.CatId" @(Model.CatID == item.CatId ? "selected" : "")>@item.CatName</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4" for="exampleInputEmail1">Chọn ảnh</label>
+                                <input type="file" class="form-control col-md-5" id="upload" multiple="multiple">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4" for="exampleInputEmail1">Danh sách ảnh vừa chọn</label>
+                                <div id="dvPreview"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4" for="exampleInputEmail1">Mô tả </label>
+                                <textarea id="txtDescription" class="form-control" cols="50" rows="5"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4" for="exampleInputEmail1">giá sản phẩm</label>
+                                <input type="text" maxlength="200" class="form-control col-md-7" onkeypress="Utils.CheckOnlyNumber(this, event)" onkeyup="FormatCurrency(this);" id="txtProductPrice" placeholder="Nhập giá sản phẩm">
+                            </div>
+                            @*<div class="form-group">
+                                <label for="exampleInputEmail1">Hiển thị ở trang chủ</label>
+                                <input type="checkbox" class="form-control" id="chkIsDisplayHomePage"  placeholder="Nhập giá sản phẩm">
+                            </div>*@
+                            <div class="form-group">
+                                <button class="btn btn-success" onclick="Product_InsertUpdate()"> <i class="fa fa-save"></i>&nbsp; Thêm mới</button>
+                                <button class="btn btn-danger"> <i class="fa fa-backward"></i>&nbsp; Quay lại</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>
+<script type="text/javascript">
+    var statusEditAva = 0;
+    var statusEditSEOAva = 0;
+    var list_attr = [];
+    var Attr_Id = "";
+    var Price_attr = "";
+    var PriceSale_attr = "";
+    $(document).ready(function () {
+
+        var productid = '@Model.ProductId';
+        var catids = '@Model.CateIds';
+
+        var parentids = $("#ddlSelectParent").val();
+
+
+
+        if (parseInt(productid) > 0) {
+            $("#Category").show();
+            var parentid = [];
+            var lstparentID = $("#ddlSelectParent").val();
+            $.each(lstparentID, function (index, item) {
+                GetCategoryByParent(item, catids);
+            });
+
+        }
+
+
+        $('#upload').on('change', function () {
+            statusEditAva = 1;
+            if (typeof (FileReader) != "undefined") {
+                var dvPreview = $("#dvPreview");
+                dvPreview.html("");
+                var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+                var index = 0;
+                $($(this)[0].files).each(function () {
+                    var file = $(this);
+                    if (regex.test(file[0].name.toLowerCase())) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            var img = $("<img class='img_" + index + "'/> <span id='span_img_" + index + "'><a onclick='RemoveProductImage(" + index + ")'>Xóa</a></span> <br/>");
+                            img.attr("style", "height:250px;width: 250px");
+                            img.attr("src", e.target.result);
+                            //  console.log(e.target.result);
+                            dvPreview.append(img);
+                            index++;
+                        }
+                        reader.readAsDataURL(file[0]);
+                    } else {
+                        alert(file[0].name + " is not a valid image file.");
+                        dvPreview.html("");
+                        return false;
+                    }
+
+
+                });
+                $("#divAddMoreImage").show();
+            } else {
+                alert("This browser does not support HTML5 FileReader.");
+            }
+        });
+
+        $('#fileaddMore').on('change', function () {
+            var dvPreview = $("#dvPreview");
+            if (typeof (FileReader) != "undefined") {
+                var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+                $($(this)[0].files).each(function () {
+                    var file = $(this);
+
+                    if (regex.test(file[0].name.toLowerCase())) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+
+                            var count = $("#dvPreview img").length;
+                            if (count != null && count != "") {
+                                count = parseInt(count, 10) - 1;
+                            }
+
+                            var img = $("<img class='img_" + (parseInt(count, 10) + 1) + "'/> <span id='span_img_" + (parseInt(count, 10) + 1) + "'><a onclick='RemoveProductImage(" + (parseInt(count, 10) + 1) + ")'>Xóa</a></span> <br/>");
+                            img.attr("style", "height:250px;width: 250px");
+                            img.attr("src", e.target.result);
+                            //  console.log(e.target.result);
+                            dvPreview.append(img);
+                            // $('#imgPreview').attr("src", e.target.result);
+
+                        };
+                        reader.readAsDataURL(file[0]);
+                    } else {
+                        alert(file[0].name + " không phải là file ảnh.");
+                        dvPreview.html("");
+                        return false;
+                    }
+                    return false;
+                });
+            } else {
+                alert("This browser does not support HTML5 FileReader.");
+            }
+        });
+
+        $('#upload_moreimage').on('change', function () {
+
+            if (typeof (FileReader) != "undefined") {
+                var dvPreview = $("#dvPreviewMoreImage");
+                dvPreview.html("");
+                var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+                var index = 0;
+                $($(this)[0].files).each(function () {
+                    var file = $(this);
+                    if (regex.test(file[0].name.toLowerCase())) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            var img = $("<img class='img_" + index + "'/> <span id='span_img_" + index + "'><a onclick='RemoveProductImageAdMore(" + index + ")'>Xóa</a></span> <br/>");
+                            img.attr("style", "height:100px;width: 100px");
+                            img.attr("src", e.target.result);
+                            dvPreview.append(img);
+                            index++;
+                        }
+                        reader.readAsDataURL(file[0]);
+                    } else {
+                        alert(file[0].name + " is not a valid image file.");
+                        dvPreview.html("");
+                        return false;
+                    }
+
+
+                });
+            } else {
+                alert("This browser does not support HTML5 FileReader.");
+            }
+        });
+
+        $('#fileSeoImageUpload').on('change', function () {
+            statusEditSEOAva = 1;
+            if (typeof (FileReader) != "undefined") {
+                var dvPreview = $("#dvPreviewSEOImage");
+                dvPreview.html("");
+                var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+                var index = 0;
+                $($(this)[0].files).each(function () {
+                    var file = $(this);
+                    if (regex.test(file[0].name.toLowerCase())) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            var img = $("<img class='img_seo_" + index + "'/> <span id='span_img_seo_" + index + "'><a onclick='RemoveProductImageSEO(" + index + ")'>Xóa</a></span> <br/>");
+                            img.attr("style", "height:200px;width: 200px");
+                            img.attr("src", e.target.result);
+                            dvPreview.append(img);
+                            index++;
+                        }
+                        reader.readAsDataURL(file[0]);
+                    } else {
+                        alert(file[0].name + " is not a valid image file.");
+                        dvPreview.html("");
+                        return false;
+                    }
+
+
+                });
+            } else {
+                alert("This browser does not support HTML5 FileReader.");
+            }
+        });
+
+        $("#txtPrice").keypress(function (evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode != 43 && charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+
+        });
+
+        $("#txtPriceSale").keypress(function (evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode != 43 && charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+
+        });
+
+
+        $("#txtPrice").change(function () {
+            $("#txtPrice").val(ProductCtrl.formatMoney($("#txtPrice").val().replace(".", "")));
+        });
+
+        $("#txtPriceSale").change(function () {
+            $("#txtPriceSale").val(ProductCtrl.formatMoney($("#txtPriceSale").val().replace(".", "")));
+        });
+
+
+        // $('#editor1').ckeditor();
+        CKEDITOR.replace('txtDescription');
+        $("#btnBack").click(function () {
+            window.location.href = Utils.UrlRoot + "quan-ly-danh-muc-san-pham";
+        });
+
+        //$("#ddlSelectAttrParent").change(function () {
+        //    var parentId = $("#ddlSelectAttrParent").val();
+        //    GetListAttributesByParent(parentId);
+        //});
+
+    });
+
+    function GetCategoryByParent(ParentId, cat_id) {
+        debugger;
+        var htmlcate = "";
+        var inputdata = { ParentId: ParentId };
+        var Url = Utils.UrlRoot + "Categories/GetListCategoriesByParentId";
+        Utils.Loading();
+        $.ajax({
+            type: 'GET',
+            url: Url,
+            data: inputdata,
+            success: function (data) {
+                //  $("#ddlSelectChildrenInsertUpdate").html("");
+                Utils.UnLoading();
+                $.each(data, function (i, item) {
+                    var catid = item.CatId;
+                    var catName = item.CatName;
+                    var parentId = item.ParentId;
+                    var parentName = item.ParentCategoryName;
+
+                    var cateIndexOf = cat_id != null && cat_id != "" ? cat_id.indexOf(item.CatId) : -1;
+
+                    if (cateIndexOf != -1) {
+                        htmlcate += " <option value='" + catid + "' selected>" + catName + " - (" + parentName + ")" + "</option>";
+                    } else {
+                        htmlcate += " <option value='" + catid + "'>" + catName + " - (" + parentName + ")" + "</option>";
+                    }
+                });
+                $("#Category").show();
+                $("#ddlSelectChildrenInsertUpdate").append(htmlcate);
+                $("#ddlSelectChildrenInsertUpdate").multiselect('rebuild');
+            },
+            error: function (data) {
+                console.log("error:" + JSON.stringify(data));
+            }
+        });
+    }
+
+    function UpdateProductImage(index, imageName) {
+        var des = "Bạn chắc chắn muốn xóa ảnh này?";
+        if (confirm(des)) {
+            var productId = '@Model.ProductId';
+            Utils.Loading();
+            $.ajax({
+                type: 'POST',
+                url: UrlRoot + "Products/UpdateProductImage",
+                data: {
+                    productId: productId,
+                    imageName: imageName
+                },
+                success: function (data) {
+                    Utils.UnLoading();
+                    if (data.ResponseCode >= 0) {
+                        $("html,body").animate({ scrollTop: $('#TemplateContent').offset().top }, 'fast');
+                        $(".alert-success label").text(data.Description);
+                        $(".alert-success").show("slow");
+                        $(".alert-danger").hide("slow");
+                        setTimeout(function () {
+                            $(".alert-success").hide("slow");
+                            $("#li_image_" + index).remove();
+                            //var curentpage = $("#CurentPageNumber").val();
+                            // window.location.href = Utils.UrlRoot + "Products/Product_Add?ProductId=" + productId + "&curentpage=" + curentpage;
+                        }, 1000);
+                    }
+                    else {
+                        $("html,body").animate({ scrollTop: $('#TemplateContent').offset().top }, 'fast');
+                        $(".alert-danger label").text(data.Description);
+                        $(".alert-danger").show("slow");
+                        $(".alert-success").hide("slow");
+                        setTimeout(function () { $(".alert-danger").hide("slow"); }, 2000);
+                    }
+                }
+            });
+        }
+
+
+    }
+    function openFileOption() {
+        $("#fileaddMore").click();
+    }
+
+    function UpdateAddMoreProductImage() {
+        $("#ModalAddmoreProductImage").modal("show");
+    }
+
+    function UpdatePositionProductImage() {
+        $("#ModalUpdatePositionProductImage").modal("show");
+    }
+
+    function btnAcceptUloadImage() {
+
+        var lstImageMore = "";
+        $("#dvPreviewMoreImage img").each(function (key, item) {
+            lstImageMore += item.src != null && item.src != "undefined" ? item.src.split(",")[1] + "," : "";
+        });
+
+        lstImageMore = lstImageMore != null && lstImageMore != "" ? lstImageMore.substr(0, lstImageMore.length - 1) : "";
+
+        var productId = '@Model.ProductId';
+        Utils.Loading();
+        $.ajax({
+            type: 'POST',
+            url: UrlRoot + "Products/UploadMoreProductImage",
+            data: {
+                productId: productId,
+                lstImageMore: lstImageMore
+            },
+            success: function (data) {
+                Utils.UnLoading();
+                if (data.ResponseCode >= 0) {
+                    $("html,body").animate({ scrollTop: $('#TemplateContent').offset().top }, 'fast');
+                    $(".alert-success label").text(data.Description);
+                    $(".alert-success").show("slow");
+                    $(".alert-danger").hide("slow");
+                    setTimeout(function () {
+                        $(".alert-success").hide("slow");
+                        $("#ModalAddmoreProductImage").modal("hide");
+                        var curentpage = $("#CurentPageNumber").val();
+                        window.location.href = UrlRoot + "Products/Product_Add?ProductId=" + productId;
+                    }, 2000);
+                }
+                else {
+                    $("html,body").animate({ scrollTop: $('#TemplateContent').offset().top }, 'fast');
+                    $(".alert-danger label").text(data.Description);
+                    $(".alert-danger").show("slow");
+                    $(".alert-success").hide("slow");
+                    setTimeout(function () { $(".alert-danger").hide("slow"); }, 2000);
+                }
+            }
+        });
+
+    }
+
+    function btnAcceptUpdatePosionImage() {
+
+        var lstImagePos = "";
+        $(".row_drag img").each(function (key, item) {
+            var url = '@media_url';
+            lstImagePos += item.src != null && item.src != "undefined" ? item.src.replace(url, "") + "," : "";
+        });
+
+        lstImagePos = lstImagePos != null && lstImagePos != "" ? lstImagePos.substr(0, lstImagePos.length - 1) : "";
+
+
+        var productId = '@Model.ProductId';
+        Utils.Loading();
+        $.ajax({
+            type: 'POST',
+            url: UrlRoot + "Products/btnAcceptUpdate_PosionImage",
+            data: {
+                productId: productId,
+                imageName: lstImagePos
+            },
+            success: function (data) {
+                Utils.UnLoading();
+                if (data.ResponseCode >= 0) {
+                    $("html,body").animate({ scrollTop: $('#TemplateContent').offset().top }, 'fast');
+                    $(".alert-success label").text(data.Description);
+                    $(".alert-success").show("slow");
+                    $(".alert-danger").hide("slow");
+                    setTimeout(function () {
+                        $(".alert-success").hide("slow");
+                        $("#ModalUpdatePositionProductImage").modal("hide");
+                        // GetRealProductInfo(productId);
+                        var curentpage = $("#CurentPageNumber").val();
+                        window.location.href = UrlRoot + "Products/Product_Add?ProductId=" + productId;
+                    }, 2000);
+                }
+                else {
+                    $("html,body").animate({ scrollTop: $('#TemplateContent').offset().top }, 'fast');
+                    $(".alert-danger label").text(data.Description);
+                    $(".alert-danger").show("slow");
+                    $(".alert-success").hide("slow");
+                    setTimeout(function () { $(".alert-danger").hide("slow"); }, 2000);
+                }
+            }
+        });
+    }
+
+
+    function RemoveProductImage(index) {
+        $("#dvPreview .img_" + index).remove();
+        $("#dvPreview #span_img_" + index).remove();
+    }
+
+
+
+    function Product_InsertUpdate() {
+
+        debugger;
+        var productId = $("#txtProductId").val();
+        var productName = $("#txtProductName").val();
+
+        if (productName == null || productName == "") {
+            ProductCtrl.showPopup("Tên sản phẩm không được trống", 0);
+            return;
+        }
+
+        var catid = $("#ddlCatId").val();
+        
+        // var imageBase64 = $('#imgPreview').attr("src");
+        var lstImageSrc = "";
+        // Lấy tất cả cả thẻ img trong thẻ div có id là dvPreview
+
+        $("#dvPreview img").each(function (index, item) {
+            //lấy src của từng ảnh trong thẻ Div dvPreview
+            var imageBase64 = item.src;
+            if (imageBase64 != null || imageBase64 != "") {
+                // Cắt bỏ đi data:image/jpeg;base64,
+                imageBase64 = imageBase64.split(',')[1];
+                lstImageSrc += imageBase64 + "_";
+            }
+            // console.log(imageBase64);
+        });
+
+
+        console.log("lstImageSrc:" + lstImageSrc);
+        // Cắt bỏ ký tự "_" ở cuối cùng
+        if (lstImageSrc != null && lstImageSrc.length > 0) {
+            lstImageSrc = lstImageSrc.substring(0, lstImageSrc.length - 1);
+        }
+
+        if (productId == 0) {
+
+            if (lstImageSrc == null || lstImageSrc == "") {
+                ProductCtrl.showPopup("Vui lòng chọn ảnh sản phẩm", 0);
+                return;
+            }
+
+
+            if (lstImageSrc.split('_').length < 1) {
+                ProductCtrl.showPopup("Vui lòng chọn ít nhất 01 ảnh sản phẩm", 0);
+                return;
+            }
+            if (lstImageSrc.split('_').length > 3) {
+                ProductCtrl.showPopup("Vui lòng chọn nhiều nhất 03 ảnh sản phẩm", 0);
+                return;
+            }
+        }
+
+
+        var description = CKEDITOR.instances["txtDescription"].getData();
+      
+
+        var inputdata = {
+            ProductId: productId
+            , ProductName: productName
+            , CatID: catid
+            , ProductImage: lstImageSrc
+            , FullDescription: description,
+            statusUpload:statusEditAva
+        };
+
+        //Utils.Loading();
+        $.ajax({
+            type: 'POST',
+            url: Utils.rootUrl() + "Product/ProductAdd",
+            data: inputdata,
+            success: function (data) {
+               // Utils.UnLoading();
+                var responseCode = data.responseCode;
+                var Description = data.Description;
+                if (responseCode > 0) {
+                    // ProductCtrl.showPopup(Description, 1);
+                    alert("ok")
+                } else {
+
+                    //ProductCtrl.showPopup(Description, 0);
+                    alert("fail");
+                }
+
+            },
+            error: function (data) {
+                console.log("error:" + JSON.stringify(data));
+            }
+        });
+    }
+
+
+
+
+    function FormatCurrency(ctrl) {
+        debugger;
+        //Check if arrow keys are pressed - we want to allow navigation around textbox using arrow keys
+        if (event.keyCode == 37 || event.keyCode == 38 || event.keyCode == 39 || event.keyCode == 40) {
+            return;
+        }
+        var val = ctrl.value;
+        val = val.replace(/[.,]/g, "");
+        ctrl.value = "";
+        val += '';
+        var x = val.split('.');
+        var x1;
+        x1 = x[0];
+        var x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        //custom dot (.) or comma(,) here
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + '.' + '$2');
+        }
+        ctrl.value = x1 + x2;
+    }
+
+    function BackListProduct() {
+        window.location.href = Utils.UrlRoot + "Products/ManagerListProducts";
+    }
+
+
+
+</script>
+

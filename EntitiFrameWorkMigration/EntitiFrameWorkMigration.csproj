@@ -54,13 +54,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassModel.cs" />
+    <Compile Include="DAL\ICategory.cs" />
     <Compile Include="DAL\ICustomerRepository.cs" />
     <Compile Include="DAL\IOrderRepository.cs" />
+    <Compile Include="DAL\IProductRepository.cs" />
     <Compile Include="DAL\IStudentDAO.cs" />
     <Compile Include="DAL\ITeacher.cs" />
+    <Compile Include="DAOImpl\CategoryRepository.cs" />
     <Compile Include="DAOImpl\CustomerReporsitory.cs" />
     <Compile Include="DAOImpl\IStudentRepository1.cs" />
     <Compile Include="DAOImpl\OrderRepository.cs" />
+    <Compile Include="DAOImpl\ProductRepository.cs" />
     <Compile Include="DAOImpl\StudentRepository.cs" />
     <Compile Include="DAO\Customer.cs" />
     <Compile Include="DAO\Order.cs" />

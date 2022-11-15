@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using static ClassLibrary1123.WebPost;
 
 namespace ClassLibrary1123
 {
@@ -52,6 +56,122 @@ namespace ClassLibrary1123
             }
 
             return s;
+        }
+
+        public static string SendPost(string postData, string url)
+        {
+            bool success = false;
+            string resp;
+            System.Text.UTF8Encoding encoding = new System.Text.UTF8Encoding();
+            byte[] data = encoding.GetBytes(postData);
+
+            System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate (object sender, X509Certificate certificate, X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors) { return true; };
+            System.Net.ServicePointManager.Expect100Continue = false;
+            // Gan tap hop cac security protocal se ho tro ( ssl3, tsl, tsl11, tsl 12) . Toan tu | tra ra mot enum 
+            // Neu khong gan mac dinh se chi co SSL3, TSL (voi framswork 4.5)
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls;
+
+            CookieContainer cookie = new CookieContainer();
+            HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(url);
+            myRequest.Method = "POST";
+            myRequest.ContentLength = data.Length;
+            myRequest.ContentType = "application/x-www-form-urlencoded";
+            myRequest.KeepAlive = false;
+            myRequest.CookieContainer = cookie;
+
+            myRequest.AllowAutoRedirect = false;
+
+            using (Stream requestStream = myRequest.GetRequestStream())
+            {
+                requestStream.Write(data, 0, data.Length);
+            }
+
+
+            string responseXml = string.Empty;
+            try
+            {
+                using (HttpWebResponse myResponse = (HttpWebResponse)myRequest.GetResponse())
+                {
+                    if (myResponse.StatusCode != HttpStatusCode.OK)
+                        success = false;
+                    else
+                        success = true;
+                    using (Stream respStream = myResponse.GetResponseStream())
+                    {
+                        using (StreamReader respReader = new StreamReader(respStream))
+                        {
+                            responseXml = respReader.ReadToEnd();
+                        }
+                    }
+                }
+            }
+            catch (WebException webEx)
+            {
+                if (webEx.Response != null)
+                {
+                    using (HttpWebResponse exResponse = (HttpWebResponse)webEx.Response)
+                    {
+                        using (StreamReader sr = new StreamReader(exResponse.GetResponseStream()))
+                        {
+                            responseXml = sr.ReadToEnd();
+                        }
+                    }
+                }
+            }
+
+
+
+            if (success)
+            {
+                resp = responseXml;
+            }
+            else
+            {
+                resp = responseXml;
+
+            }
+
+          
+            return resp;
+        }
+
+        public static string SendGet(string url)
+        {
+            string response = string.Empty;
+            try
+            {
+                System.Net.ServicePointManager.CertificatePolicy = new TrustAllCertificatePolicy();
+                HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(url);
+
+                myRequest.Method = "GET";
+                //myRequest.ContentLength = data.Length;
+                myRequest.CookieContainer = new CookieContainer();
+                //myRequest.ContentType = "application/x-www-form-urlencoded";
+                myRequest.ContentType = "application/json; charset=UTF-8";
+                myRequest.KeepAlive = false;
+
+                using (HttpWebResponse myResponse = (HttpWebResponse)myRequest.GetResponse())
+                {
+                    using (var reader = new StreamReader(myResponse.GetResponseStream()))
+                    {
+                        if (reader != null)
+                        {
+                            response = reader.ReadToEnd();
+                        }
+                    }
+                }
+            }
+            catch (WebException ex)
+            {
+                // Graph API Errors or general web exceptions 
+
+                response = ex.Message;
+
+            }
+            catch (Exception)
+            { }
+
+            return response;
         }
 
     }

@@ -25,6 +25,9 @@ namespace EntitiFrameWorkMigration
         public virtual DbSet<Order> order { get; set; }
         public virtual DbSet<Grade> grade { get; set; }
 
+        public virtual DbSet<Product> product { get; set; }
+
+        public virtual DbSet<Category> category{get; set; }
 
     }
 }
