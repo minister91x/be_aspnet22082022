@@ -1,0 +1,15 @@
+C:\Users\Admin\source\repos\ConsoleAppDemo\UnitTestProjectDemo\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Admin\source\repos\ConsoleAppDemo\UnitTestProjectDemo\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Admin\source\repos\ConsoleAppDemo\UnitTestProjectDemo\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Admin\source\repos\ConsoleAppDemo\UnitTestProjectDemo\bin\Debug\Microsoft.TestPlatform.AdapterUtilities.dll
+C:\Users\Admin\source\repos\ConsoleAppDemo\UnitTestProjectDemo\bin\Debug\UnitTestProjectDemo.dll
+C:\Users\Admin\source\repos\ConsoleAppDemo\UnitTestProjectDemo\bin\Debug\UnitTestProjectDemo.pdb
+C:\Users\Admin\source\repos\ConsoleAppDemo\UnitTestProjectDemo\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\Admin\source\repos\ConsoleAppDemo\UnitTestProjectDemo\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Admin\source\repos\ConsoleAppDemo\UnitTestProjectDemo\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\Admin\source\repos\ConsoleAppDemo\UnitTestProjectDemo\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\Admin\source\repos\ConsoleAppDemo\UnitTestProjectDemo\obj\Debug\UnitTestProjectDemo.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\ConsoleAppDemo\UnitTestProjectDemo\obj\Debug\UnitTestProjectDemo.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\ConsoleAppDemo\UnitTestProjectDemo\obj\Debug\UnitTestProjectDemo.csproj.CopyComplete
+C:\Users\Admin\source\repos\ConsoleAppDemo\UnitTestProjectDemo\obj\Debug\UnitTestProjectDemo.dll
+C:\Users\Admin\source\repos\ConsoleAppDemo\UnitTestProjectDemo\obj\Debug\UnitTestProjectDemo.pdb

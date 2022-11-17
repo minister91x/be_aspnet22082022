@@ -563,14 +563,14 @@ namespace ConsoleAppDemo
             //    }
             //}
 
-            var list = DBHelper.GetEmployees();
-            if (list != null && list.Count > 0)
-            {
-                foreach (var item in list)
-                {
-                    Console.WriteLine("Name:" + item.Name);
-                }
-            }
+           //// var list = DBHelper.GetEmployees();
+           // if (list != null && list.Count > 0)
+           // {
+           //     foreach (var item in list)
+           //     {
+           //         Console.WriteLine("Name:" + item.Name);
+           //     }
+           // }
             Console.WriteLine("statictValue:" + quanLySinhVien.GenerateID());
             Console.ReadLine();
 
