@@ -1,30 +1,76 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    var media_path = "http://localhost:51227/upload/";
 }
-@model List<WebApplicationDemo.Models.NHANVIEN>
+@model List<WebApplicationDemo.Models.ProductModelViews>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Phone</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model != null && Model.Count > 0)
-        {
-            foreach (var item in Model)
+<div class="product-section section pt-70 pb-60">
+    <div class="container">
+
+        <!-- Section Title Start-->
+        <div class="row">
+            <div class="section-title text-center col mb-60">
+                <h1>Featured Products</h1>
+            </div>
+        </div><!-- Section Title End-->
+        <!-- Product Wrapper Start-->
+        <div class="row">
+
+            <!-- Product Start-->
+            @if (Model != null && Model.Count > 0)
             {
-                <tr>
-                    <td>@item.MaNV</td>
-                    <td>@item.TenNV</td>
-                    <td>@item.Tuoi</td>
-                    <td>@item.SDT</td>
-                </tr>
+                foreach (var item in Model)
+                {
+                    var prodImg = item.ProductImage.Split(',').Length > 0 ? item.ProductImage.Split(',')[0] : item.ProductImage;
+                    var image_path = media_path + prodImg;
+                    <div class="col-lg-4 col-md-6 col-12 mb-60">
 
+                        <div class="product">
+
+                            <!-- Image Wrapper -->
+                            <div class="image">
+                                <!-- Image -->
+                                <a href="@Html.Raw(ClassLibrary1123.ConfigCommon.Domain_URL)san-pham-@ClassLibrary1123.ConfigCommon.ConvertToVietNammese(item.ProductName)-@item.ProductId" class="img"><img src="@image_path" alt="Product"></a>
+                                <!-- Wishlist -->
+                                <a href="#" class="wishlist"><i class="fa fa-heart-o"></i></a>
+                                <!-- Label -->
+                                <span class="label">New</span>
+                            </div>
+
+                            <!-- Content -->
+                            <div class="content">
+
+                                <!-- Head Content -->
+                                <div class="head fix">
+
+                                    <!-- Title & Category -->
+                                    <div class="title-category float-left">
+                                        <h5 class="title"><a href="product-details.html">@item.ProductName</a></h5>
+                                        <a href="shop.html" class="category">Catalog</a>
+                                    </div>
+                                    <!-- Price -->
+                                    <div class="price float-right">
+                                        <span class="new">@string.Format("{0:##,#}", item.Price)</span>
+                                        <!-- Old Price Mockup If Need -->
+                                        <!-- <span class="old">$46</span> -->
+                                    </div>
+
+                                </div>
+
+                                <!-- Action Button -->
+                                <div class="action-button fix">
+                                    <a href="#">add to cart</a>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div><!-- Product End-->
+                    <!-- Product Start-->
+                }
             }
-        }
-    </tbody>
-</table>
+        </div><!-- Product Wrapper End-->
+
+    </div>
+</div>

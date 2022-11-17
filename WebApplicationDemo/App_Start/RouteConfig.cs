@@ -18,6 +18,12 @@ namespace WebApplicationDemo
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+               name: "chi-tiet",
+               url: "san-pham-{productName}-{ProductId}",
+               defaults: new { controller = "Home", action = "ProductDetail", productName = UrlParameter.Optional, ProductId = UrlParameter.Optional }
+           );
         }
     }
 }

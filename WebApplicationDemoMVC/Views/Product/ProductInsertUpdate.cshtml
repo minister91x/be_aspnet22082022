@@ -64,6 +64,10 @@
                                 <div id="dvPreview"></div>
                             </div>
                             <div class="form-group">
+                                <label class="col-md-4" for="exampleInputEmail1">Mô tả ngắn </label>
+                                <textarea id="txtShortDescription" class="form-control" cols="50" rows="5"></textarea>
+                            </div>
+                            <div class="form-group">
                                 <label class="col-md-4" for="exampleInputEmail1">Mô tả </label>
                                 <textarea id="txtDescription" class="form-control" cols="50" rows="5"></textarea>
                             </div>
@@ -73,9 +77,9 @@
                                 <input type="text" maxlength="200" class="form-control col-md-7" onkeypress="Utils.CheckOnlyNumber(this, event)" onkeyup="FormatCurrency(this);" id="txtProductPrice" placeholder="Nhập giá sản phẩm">
                             </div>
                             @*<div class="form-group">
-                                <label for="exampleInputEmail1">Hiển thị ở trang chủ</label>
-                                <input type="checkbox" class="form-control" id="chkIsDisplayHomePage"  placeholder="Nhập giá sản phẩm">
-                            </div>*@
+            <label for="exampleInputEmail1">Hiển thị ở trang chủ</label>
+            <input type="checkbox" class="form-control" id="chkIsDisplayHomePage"  placeholder="Nhập giá sản phẩm">
+        </div>*@
                             <div class="form-group">
                                 <button class="btn btn-success" onclick="Product_InsertUpdate()"> <i class="fa fa-save"></i>&nbsp; Thêm mới</button>
                                 <button class="btn btn-danger"> <i class="fa fa-backward"></i>&nbsp; Quay lại</button>
@@ -116,6 +120,7 @@
 
 
         $('#upload').on('change', function () {
+            debugger;
             statusEditAva = 1;
             if (typeof (FileReader) != "undefined") {
                 var dvPreview = $("#dvPreview");
@@ -526,7 +531,7 @@
             }
         }
 
-
+        var shordecription = $("#txtShortDescription").val();
         var description = CKEDITOR.instances["txtDescription"].getData();
       
 
@@ -536,6 +541,7 @@
             , CatID: catid
             , ProductImage: lstImageSrc
             , FullDescription: description,
+            Shordecription: shordecription,
             statusUpload:statusEditAva
         };
 

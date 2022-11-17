@@ -57,8 +57,9 @@ namespace WebApplicationDemoMVC.Controllers
             return View(model);
         }
 
+        [HttpPost, ValidateInput(false)]
         public JsonResult ProductAdd(int ProductId, string ProductName, int CatID, string ProductImage
-            , string FullDescription, int statusUpload)
+            , string FullDescription, string Shordecription, int statusUpload)
         {
             var returnData = new ReturnData();
             try
@@ -75,8 +76,29 @@ namespace WebApplicationDemoMVC.Controllers
 
 
                 }
+                var product = new EntitiFrameWorkMigration.DAO.Product();
+                
+                var category_db = new EntitiFrameWorkMigration.DAO.Category();
+                category_db.CatId = CatID;
 
-                var a = ProductImageInsert;
+                product.ProductId = ProductId;
+                product.ProductName = ProductName;
+                product.category = category_db;
+                product.ProductImage = ProductImageInsert;
+                product.FullDescription = FullDescription;
+                product.ShortDescription = Shordecription;
+
+                var result = new EntitiFrameWorkMigration.DAOImpl.ProductRepository().Product_Insert(product);
+                if (result <= 0)
+                {
+                    returnData.ReturnCode = -1;// thất bại 
+                    returnData.ReturnMessenger = "Thêm sản phẩm thất bại";
+                    return Json(returnData, JsonRequestBehavior.AllowGet);
+                }
+
+                returnData.ReturnCode =1;// 
+                returnData.ReturnMessenger = "Thêm sản phẩm thành công";
+                return Json(returnData, JsonRequestBehavior.AllowGet);
             }
             catch (Exception)
             {
