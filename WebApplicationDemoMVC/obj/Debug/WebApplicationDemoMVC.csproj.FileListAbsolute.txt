@@ -94,3 +94,6 @@ C:\Users\Admin\source\repos\ConsoleAppDemo\WebApplicationDemoMVC\bin\WebActivato
 C:\Users\Admin\source\repos\ConsoleAppDemo\WebApplicationDemoMVC\bin\System.Net.Http.Formatting.xml
 C:\Users\Admin\source\repos\ConsoleAppDemo\WebApplicationDemoMVC\bin\System.Web.Http.xml
 C:\Users\Admin\source\repos\ConsoleAppDemo\WebApplicationDemoMVC\bin\System.Web.Http.WebHost.xml
+C:\Users\Admin\source\repos\ConsoleAppDemo\WebApplicationDemoMVC\bin\EPPlus.dll
+C:\Users\Admin\source\repos\ConsoleAppDemo\WebApplicationDemoMVC\bin\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\Admin\source\repos\ConsoleAppDemo\WebApplicationDemoMVC\bin\Microsoft.IO.RecyclableMemoryStream.xml

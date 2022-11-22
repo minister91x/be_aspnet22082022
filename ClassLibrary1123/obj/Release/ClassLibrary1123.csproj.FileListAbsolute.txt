@@ -1,0 +1,6 @@
+C:\Users\Admin\source\repos\ConsoleAppDemo\ClassLibrary1123\bin\Release\ClassLibrary1123.dll
+C:\Users\Admin\source\repos\ConsoleAppDemo\ClassLibrary1123\bin\Release\ClassLibrary1123.pdb
+C:\Users\Admin\source\repos\ConsoleAppDemo\ClassLibrary1123\obj\Release\ClassLibrary1123.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\ConsoleAppDemo\ClassLibrary1123\obj\Release\ClassLibrary1123.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\ConsoleAppDemo\ClassLibrary1123\obj\Release\ClassLibrary1123.dll
+C:\Users\Admin\source\repos\ConsoleAppDemo\ClassLibrary1123\obj\Release\ClassLibrary1123.pdb

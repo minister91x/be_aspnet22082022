@@ -1,5 +1,8 @@
-﻿using System;
+﻿using OfficeOpenXml;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -102,7 +105,7 @@ namespace WebApplicationDemoMVC.Controllers
             return View();
         }
 
-        public ActionResult StudentInsertUpdate(string product_type ,string name ,int? id)
+        public ActionResult StudentInsertUpdate(string product_type, string name, int? id)
         {
 
 
@@ -213,5 +216,102 @@ namespace WebApplicationDemoMVC.Controllers
 
             return View();
         }
+
+        public JsonResult ReadExcelData()
+        {
+            var list = new List<Student>();
+            try
+            {
+                HttpPostedFileBase excelFile = Request.Files["UploadedFile"];
+
+                var package = new ExcelPackage(excelFile.InputStream);
+
+                ExcelWorksheet ws = package.Workbook.Worksheets[1];
+                for (int rw = 2; rw < ws.Dimension.End.Row; rw++)
+                {
+                    var firstName = ws.Cells[rw, 1].Value;
+                    var lastName = ws.Cells[rw, 2].Value;
+                    list.Add(new Student { Name = firstName + " " + lastName });
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+        public void ExportExcel_EPPLUS()
+        {
+
+            var list = new List<Student>();
+            //Bước 1 lấy dữ từ một nguồn nào nào đó : SQL ,WebAPI ,file ,từ file Json ...vv
+            for (int i = 0; i < 10; i++)
+            {
+                list.Add(new Student { Id = i, Name = "Tên số :" + i });
+            }
+
+            //Bước 2 : dùng thư viện EPPLUS
+            ExcelPackage ep = new ExcelPackage();
+            ExcelWorksheet Sheet = ep.Workbook.Worksheets.Add("Report");
+
+            Sheet.Cells["A1"].Value = "Mã học sinh";
+            Sheet.Cells["B1"].Value = "Tên học sinh";
+            int row = 2;// dòng bắt đầu ghi dữ liệu
+            foreach (var item in list)
+            {
+                Sheet.Cells[string.Format("A{0}", row)].Value = item.Id;
+                Sheet.Cells[string.Format("B{0}", row)].Value = item.Name;
+
+                row++;
+            }
+            Sheet.Cells["A:AZ"].AutoFitColumns();
+            Response.Clear();
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment; filename=" + "Report.xlsx");
+            Response.BinaryWrite(ep.GetAsByteArray());
+            Response.End();
+
+        }
+
+        public static Stream UpdateDataIntoExcelTemplate(List<Student> cList, FileInfo path)
+        {
+            Stream stream = new MemoryStream();
+            if (path.Exists)
+            {
+                using (ExcelPackage p = new ExcelPackage(path))
+                {
+                    ExcelWorksheet wsEstimate = p.Workbook.Worksheets["Sheet1"];
+                    //wsEstimate.Cells["B5:E8"].LoadFromCollection(cList);
+                    for (int i = 0; i < cList.Count; i++)
+                    {
+                        var item = cList[i];
+                        wsEstimate.Cells[string.Format("A{0}", i)].Value = item.Id;
+                        wsEstimate.Cells[string.Format("B{0}", i)].Value = item.Name;
+                    }
+
+                    p.SaveAs(stream);
+                    stream.Position = 0;
+                }
+            }
+            return stream;
+        }
+
+
+        public ActionResult DownloadXlsxReport()
+        {
+            var list = new List<Student>();
+            //Bước 1 lấy dữ từ một nguồn nào nào đó : SQL ,WebAPI ,file ,từ file Json ...vv
+            for (int i = 0; i < 10; i++)
+            {
+                list.Add(new Student { Id = i, Name = "Tên số :" + i });
+            }
+            var ContentRootPath = System.Configuration.ConfigurationManager.AppSettings["ContentRootPath"].ToString();
+            string timestamp = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss", CultureInfo.InvariantCulture).ToUpper().Replace(':', '_').Replace('.', '_').Replace(' ', '_').Trim();
+            var templateFileInfo = new FileInfo(Path.Combine(ContentRootPath, "Template", "StudentTemplate.xlsx"));
+            var stream = UpdateDataIntoExcelTemplate(list, templateFileInfo);
+            return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "CertificationsReport-" + timestamp + ".xlsx");
+        }
+
     }
 }

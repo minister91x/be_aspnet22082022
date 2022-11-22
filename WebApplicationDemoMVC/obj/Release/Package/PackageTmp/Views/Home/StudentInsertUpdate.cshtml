@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model WebApplicationDemoMVC.Models.Student
+@Html.ValidationSummary(false, "Hãy điền đầy đủ các thông tin bên dưới", new { @class = "danger" })
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        <input type="hidden" id="txtStudetId" value="@Model.Id" />
+        @*@Html.TextBoxFor(m => m.Name)
+        @Html.ValidationMessageFor(m => m.Name, "Tên không được trống ", new { @class = "text-danger" })*@
+        <input type="text" id="txtUserName" placeholder="nhập tên" class="form-control" value="@Model.Name" />
+        @*<input type="text" id="txtEmail" placeholder="nhập tên" class="form-control" />*@
+        <button type="submit" class="btn btn-primary" id="btnSend">Cập nhật </button>
+
+    </div>
+}
+<script>
+    $(document).ready(function () {
+        LoadPartialView(1);
+
+        $("#btnSend").click(function () {
+            debugger;
+            var userName = $("#txtUserName").val();
+            SendData(userName)
+        });
+    });
+
+    function SendData(userName) {
+        debugger;
+        //if (userName == null || userName=="") {
+        //    alert("UserName không được trống!");
+        //    return;
+        //}
+        //if (userName.length > 100) {
+        //    alert("UserName không dài quá 100 ký tự!");
+        //    return;
+        //}
+        var input = {
+            Id: $("#txtStudetId").val(),
+            Name: userName
+        };
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/Home/StudentInsertUpdate",
+            data: JSON.stringify(input),
+            dataType: 'json',
+            success: function (data) {
+                var res = data.ReturnCode;
+                var mes = data.ReturnMessenger;
+                $("#p1").show();
+                $("#p1").html(mes);
+                if (res > 0) {
+                    $("#myModal").modal("show");
+                } else {
+                    $("#myModal").modal("show");
+                }
+
+
+                //if (res > 0) {
+                //    $("#notification").show();
+                //    $("#notification").html(mes);
+                //}
+                LoadPartialView();
+            },
+            error: function (e) {
+
+                console.log("ERROR : ", e);
+            }
+        });
+
+    }
+
+    function LoadPartialView(page) {
+
+
+        var reqestData = {
+            ViewName: 'About1234'
+        };
+
+        $.ajax({
+            type: "GET",
+            contentType: "json",
+            url: "/Home/DemoPartial",
+            data: reqestData,
+            cache: false,
+            success: function (ketqua) {
+
+                console.log("du lieu nhan duoc :", JSON.stringify(ketqua));
+                $("#PartialData").html(ketqua);
+            },
+            error: function (e) {
+
+                console.log("ERROR : ", e);
+            }
+        });
+
+    }
+
+</script>
+

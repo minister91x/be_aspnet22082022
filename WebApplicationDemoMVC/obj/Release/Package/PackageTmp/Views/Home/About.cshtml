@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Use this area to provide additional information.</p>
+@*@Html.Action("DemoPartial", "Home", new { ViewNameInput = "About", ViewNameInput2 = "Bien2"})*@
+@Html.ActionLink("bam vao day","Index")
+<div id="PartialData"></div>
+<a href="/home/StudentInsertUpdate">Insert</a>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Thông báo</h4>
+            </div>
+            <div class="modal-body">
+                <p id="p1" style="display:none"></p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        LoadPartialView(1);
+
+        $("#btnSend").click(function () {
+            debugger;
+            var userName = $("#txtUserName").val();
+            SendData(userName)
+        });
+    });
+
+    function SendData(userName) {
+        debugger;
+        var reqestData = {
+            UserName: userName
+        };
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/Home/SaveData",
+            data: JSON.stringify(reqestData),
+            dataType: 'json',
+            success: function (data) {
+                var res = data.ReturnCode;
+                var mes = data.ReturnMessenger;
+                $("#p1").show();
+                $("#p1").html(mes);
+                if (res > 0) {
+                    $("#myModal").modal("show");
+                } else {
+                    $("#myModal").modal("show");
+                }
+
+
+                //if (res > 0) {
+                //    $("#notification").show();
+                //    $("#notification").html(mes);
+                //}
+                LoadPartialView();
+            },
+            error: function (e) {
+
+                console.log("ERROR : ", e);
+            }
+        });
+
+    }
+
+    function LoadPartialView(page) {
+
+
+        var reqestData = {
+            ViewName: 'About1234'
+        };
+
+        $.ajax({
+            type: "GET",
+            contentType: "json",
+            url: "/Home/DemoPartial",
+            data: reqestData,
+            cache: false,
+            success: function (ketqua) {
+
+                console.log("du lieu nhan duoc :", JSON.stringify(ketqua));
+                $("#PartialData").html(ketqua);
+            },
+            error: function (e) {
+
+                console.log("ERROR : ", e);
+            }
+        });
+
+    }
+
+</script>

@@ -1,0 +1,13 @@
+C:\Users\Admin\source\repos\ConsoleAppDemo\EntitiFrameWorkMigration\bin\Release\EntitiFrameWorkMigration.exe.config
+C:\Users\Admin\source\repos\ConsoleAppDemo\EntitiFrameWorkMigration\bin\Release\EntitiFrameWorkMigration.exe
+C:\Users\Admin\source\repos\ConsoleAppDemo\EntitiFrameWorkMigration\bin\Release\EntitiFrameWorkMigration.pdb
+C:\Users\Admin\source\repos\ConsoleAppDemo\EntitiFrameWorkMigration\bin\Release\EntityFramework.dll
+C:\Users\Admin\source\repos\ConsoleAppDemo\EntitiFrameWorkMigration\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Admin\source\repos\ConsoleAppDemo\EntitiFrameWorkMigration\bin\Release\EntityFramework.xml
+C:\Users\Admin\source\repos\ConsoleAppDemo\EntitiFrameWorkMigration\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Admin\source\repos\ConsoleAppDemo\EntitiFrameWorkMigration\obj\Release\EntitiFrameWorkMigration.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\ConsoleAppDemo\EntitiFrameWorkMigration\obj\Release\EntitiFrameWorkMigration.csproj.SuggestedBindingRedirects.cache
+C:\Users\Admin\source\repos\ConsoleAppDemo\EntitiFrameWorkMigration\obj\Release\EntitiFrameWorkMigration.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\ConsoleAppDemo\EntitiFrameWorkMigration\obj\Release\EntitiFrameWorkMigration.csproj.CopyComplete
+C:\Users\Admin\source\repos\ConsoleAppDemo\EntitiFrameWorkMigration\obj\Release\EntitiFrameWorkMigration.exe
+C:\Users\Admin\source\repos\ConsoleAppDemo\EntitiFrameWorkMigration\obj\Release\EntitiFrameWorkMigration.pdb

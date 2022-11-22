@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    @*@Html.AntiForgeryToken()*@
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <script src="~/Scripts/jquery-3.4.1.js?v=@DateTime.Now.Ticks"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+@{
+    var isShow = 0;
+    var url = Request.Url.AbsoluteUri;
+    var url1 = Request.RawUrl ;// đường dẫn ở dạng đã router
+    if (!url.Contains("About"))
+    {
+        isShow = 1;
+    }
+}
+<body>
+    @Html.Action("HeaderPartial", "Home")
+    <div style="@(isShow==1?"display:block":"display:none")">
+        @Html.Action("IndexPartial", "Common");
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,207 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    var dateNow = DateTime.Now;
+}
+@*@model List<WebApplicationDemoMVC.Models.Student>*@
+@model List<WebApplicationDemoMVC.Models.Student>
+@*<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>*@
+@*<button type="button" class="btn btn-info btn-lg" id="btnShowPopup">Open Modal</button>*@
+@*<a href="/home/MyAction/ten-2022"> Bấm vào đây </a>*@
+
+GIỜ HIỆN TẠI : @dateNow.Hour
+@{
+    var dateNow1 = DateTime.Now;
+    var diem = 10;
+    var hoc_luc = string.Empty;
+    switch (diem)
+    {
+        case 1: hoc_luc = "Good"; break;
+        case 2: hoc_luc = "Bad"; break;
+        default: hoc_luc = "OK"; break;
+    }
+
+    var status = 0;
+    var statusName = string.Empty;
+    switch (status)
+    {
+        case 1: statusName = "Refund"; break;
+        case 2: statusName = "Cancel"; break;
+        default: statusName = "OK"; break;
+    }
+
+}
+<style>
+    .li_border {
+        border: 1px solid;
+        border-radius: 5px;
+    }
+</style>
+@*<input type="text" id="txtKeySearch" class="form-control" />
+<ul id="lst_suggestion" style="list-style:none;display:none;">
+    <li class="li_border">1</li>
+    <li class="li_border">2</li>
+</ul>
+<select id="ddlHocLuc" class="form-control">
+    <option value="1">gioi</option>
+    <option value="2">Kha</option>
+</select>
+<a href="/home/StudentInsertUpdate">Insert</a>
+<a>Xóa tất cả</a>
+
+<button class="btn btn-success" onclick="LogOut()">LogOut</button>
+
+<a href="/Account/LogOut">LogOut</a>*@
+
+<table class="table">
+    <thead>
+        <tr>
+            <th><input type="checkbox" id="chkDelete1" /></th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td><input type="checkbox" id="chkDelete" /></td>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@hoc_luc</td>
+                    <td>
+                        @*<a onclick="ShowPopUpEdit(@item.Id)" class="badge badge-danger">Edit</a>*@
+                        <a href="danh-muc-@ClassLibrary1123.ConfigCommon.ConvertToVietNammese(item.Name)-@item.Id" class="badge badge-warning">edit</a></td>
+                    <td><a onclick="StudentDelete(@item.Id)" class="badge badge-danger">delete</a></td>
+                </tr>
+
+            }
+        }
+
+    </tbody>
+</table>
+<div id="PopupEdit"></div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <p id="p1" style="display:none">Some text in the modal.</p>
+                <p id="p2" style="display:none">Some text in the modal 2</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#btnShowPopup").click(function () {
+            debugger;
+            $("#myModal").modal("show");// show popup
+            $("#p2").show();
+            // $("#myModal").modal("hide"); // hide popup
+        });
+
+        $("#txtKeySearch").keyup(function () {
+            //alert($(this).val());
+            var data_input = $(this).val();
+
+            var html_li = "";
+            $("#lst_suggestion").html("");
+
+            for (var i = 0; i < 10; i++) {
+                html_li += "<li class=\"li_border\"><a href='https://www.youtube.com/'>" + i + "</a></li>"
+            }
+            if (data_input != null || data_input != "") {
+                $("#lst_suggestion").html(html_li);
+                $("#lst_suggestion").show();
+
+            } else {
+                $("#lst_suggestion").html("");
+                $("#lst_suggestion").hide();
+            }
+
+
+        });
+
+        var ddlValues = $("#ddlHocLuc").val();
+    });
+
+    function LogOut() {
+        window.location.href = "/Account/LogOut"
+    }
+    function ShowPopUpEdit(id) {
+        var reqestData = {
+            id: id,
+
+        };
+
+        $.ajax({
+            type: "GET",
+            /*contentType: "application/json",*/
+            url: "/Home/PoupEdit",
+            data: reqestData,
+            dataType: 'html',
+            success: function (data) {
+                $("#PopupEdit").html(data);
+                $("#myModalEdit").modal("show");
+            },
+            error: function (e) {
+
+                console.log("ERROR : ", e);
+            }
+        });
+    }
+
+    function StudentDelete(id) {
+
+        var res = confirm("Bạn có chắc chắn muốn xóa bản ghi này không ?!");
+        if (res == true) {
+            DeleteStudent(id);
+        }
+    }
+
+    function DeleteStudent(id) {
+        debugger;
+        var reqestData = {
+            id: id,
+
+        };
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/Home/Delete",
+            data: JSON.stringify(reqestData),
+            dataType: 'json',
+            success: function (data) {
+                var res = data.ReturnCode;
+                var mes = data.ReturnMessenger;
+
+                alert(mes);
+
+                //if (res > 0) {
+                //    $("#notification").show();
+                //    $("#notification").html(mes);
+                //}
+                LoadPartialView();
+            },
+            error: function (e) {
+
+                console.log("ERROR : ", e);
+            }
+        });
+
+    }
+</script>
